@@ -52,329 +52,8 @@
                                 </div>
                             </div>
                             <div class="product_menu_tab_content active"  id="JobList">
-                               
-                                {{-- <div class="recent_job_content mt-5">
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="recent_job_content_text">
-                                                <a>Digital Marketer
-                                                </a>
-                                                <a href="#">On-Site</a>
-                                                <a href="#">Meta
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="recent_job_content_btn">
-                                                <a href="#">$2000
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-9">
-                                            <div class="recent_job_content_texts">
-
-                                                <a href="#">php</a>
-                                                <a href="#">laravel</a>
-                                                <a href="#">Vue JS
-                                                </a>
-                                                <a href="#">mysql
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="recent_job_content_btn">
-                                                <a href="#">Apply
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="recent_job_content mt-5">
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="recent_job_content_text">
-                                                <a>Laravel Developer
-                                                </a>
-                                                <a href="#">On-Site</a>
-                                                <a href="#">Meta
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="recent_job_content_btn">
-                                                <a href="#">$2000
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-9">
-                                            <div class="recent_job_content_texts">
-
-                                                <a href="#">php</a>
-                                                <a href="#">laravel</a>
-                                                <a href="#">Vue JS
-                                                </a>
-                                                <a href="#">mysql
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="recent_job_content_btn">
-                                                <a href="#">Apply
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="recent_job_content mt-5">
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="recent_job_content_text">
-                                                <a>Laravel Developer
-                                                </a>
-                                                <a href="#">On-Site</a>
-                                                <a href="#">Meta
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="recent_job_content_btn">
-                                                <a href="#">$2000
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-9">
-                                            <div class="recent_job_content_texts">
-
-                                                <a href="#">php</a>
-                                                <a href="#">laravel</a>
-                                                <a href="#">Vue JS
-                                                </a>
-                                                <a href="#">mysql
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="recent_job_content_btn">
-                                                <a href="#">Apply
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
+                              
                             </div>
-                            {{-- <div class="product_menu_tab_content">
-                                <div class="row">
-                                    <div class="recent_job_content">
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <div class="recent_job_content_text">
-                                                    <a>FullStack Developer</a>
-                                                    <a href="#">Remote</a>
-                                                    <a href="#">X</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="recent_job_content_btn">
-                                                    <a href="#">$1000
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-5">
-                                            <div class="col-md-9">
-                                                <div class="recent_job_content_texts">
-                                                    <a href="#">php</a>
-                                                    <a href="#">laravel</a>
-                                                    <a href="#">Vue JS
-                                                    </a>
-                                                    <a href="#">mysql
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="recent_job_content_btn">
-                                                    <a href="#">Apply
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="recent_job_content mt-5">
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <div class="recent_job_content_text">
-                                                    <a>FullStack Developer</a>
-                                                    <a href="#">Remote</a>
-                                                    <a href="#">X</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="recent_job_content_btn">
-                                                    <a href="#">$1000
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-5">
-                                            <div class="col-md-9">
-                                                <div class="recent_job_content_texts">
-                                                    <a href="#">php</a>
-                                                    <a href="#">laravel</a>
-                                                    <a href="#">Vue JS
-                                                    </a>
-                                                    <a href="#">mysql
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="recent_job_content_btn">
-                                                    <a href="#">Apply
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product_menu_tab_content">
-                                <div class="row">
-                                    <div class="recent_job_content">
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <div class="recent_job_content_text">
-                                                    <a>FullStack Developer</a>
-                                                    <a href="#">Remote</a>
-                                                    <a href="#">X</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="recent_job_content_btn">
-                                                    <a href="#">$1000
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-5">
-                                            <div class="col-md-9">
-                                                <div class="recent_job_content_texts">
-                                                    <a href="#">php</a>
-                                                    <a href="#">laravel</a>
-                                                    <a href="#">Vue JS
-                                                    </a>
-                                                    <a href="#">mysql
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="recent_job_content_btn">
-                                                    <a href="#">Apply
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product_menu_tab_content">
-                                <div class="row">
-                                    <div class="recent_job_content">
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <div class="recent_job_content_text">
-                                                    <a>FullStack Developer</a>
-                                                    <a href="#">Remote</a>
-                                                    <a href="#">X</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="recent_job_content_btn">
-                                                    <a href="#">$1000
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-5">
-                                            <div class="col-md-9">
-                                                <div class="recent_job_content_texts">
-                                                    <a href="#">php</a>
-                                                    <a href="#">laravel</a>
-                                                    <a href="#">Vue JS
-                                                    </a>
-                                                    <a href="#">mysql
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="recent_job_content_btn">
-                                                    <a href="#">Apply
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product_menu_tab_content">
-                                <div class="row">
-                                    <div class="recent_job_content">
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <div class="recent_job_content_text">
-                                                    <a>FullStack Developer</a>
-                                                    <a href="#">Remote</a>
-                                                    <a href="#">X</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="recent_job_content_btn">
-                                                    <a href="#">$1000
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-5">
-                                            <div class="col-md-9">
-                                                <div class="recent_job_content_texts">
-                                                    <a href="#">php</a>
-                                                    <a href="#">laravel</a>
-                                                    <a href="#">Vue JS
-                                                    </a>
-                                                    <a href="#">mysql
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="recent_job_content_btn">
-                                                    <a href="#">Apply
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            {{-- <div class="row pt-4">
-                                <div class="col-md-6"></div>
-                                <div class="col-md-6 mt-4">
-                                    <div class="notice_pagenation">
-                                        <a href="#">&laquo;</a>
-                                        <a href="#">1</a>
-                                        <a href="#">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#">&raquo;</a>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -383,67 +62,73 @@
     </section>
     <!-- Job Content End -->
 
-    <script>
-        Joblist();
 
-        async function Joblist() {
-            try {
-                let res = await axios.get("/list-job-data");
-                $("#JobList").empty();
+    
+   
+<script>
+    Joblist();
 
-                if (res.data['status'] === 'success') {
-                    const jobListData = res.data['jobListData'];
+    async function Joblist() {
+        try {
+            let res = await axios.get("/list-job-data");
+            $("#JobList").empty();
 
-                    if (jobListData.length === 0) {
-                        // Handle case where no data is returned
-                        console.warn("No job data found");
-                        return;
+            if (res.data['status'] === 'success') {
+                const jobListData = res.data['jobListData'];
+
+                if (jobListData.length === 0) {
+                    console.warn("No job data found");
+                    return;
+                }
+
+                jobListData.forEach((item, i) => {
+                    let skillsHTML = "";
+
+                    // Check if job_skills is an array and not empty
+                    if (Array.isArray(item['job_skills']) && item['job_skills'].length > 0) {
+                        item['job_skills'].forEach(skill => {
+                            skillsHTML += `<a href="#">${skill}</a>`;
+                        });
+                    } else {
+                        // Handle case where job_skills is not an array or is empty
+                        skillsHTML = '<span>No skills listed</span>';
                     }
 
-                    jobListData.forEach((item, i) => {
-                        let EachItem = `<div class="recent_job_content mt-3">
-    <div class="row">
-        <div class="col-md-9">
-            <div class="recent_job_content_text">
-                <a>${item['job_title']}</a>
-                <a href="#">${item['job_type']}</a>
-                <a href="#">X</a>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="recent_job_content_btn">
-                <a href="#">${item['salary']}
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-md-9">
-            <div class="recent_job_content_texts">
-                <a href="#">php</a>
-                <a href="#">laravel</a>
-                <a href="#">Vue JS
-                </a>
-                <a href="#">mysql
-                </a>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="recent_job_content_btn">
-                <a href="#">Apply
-                </a>
-            </div>
-        </div>
-    </div>
-</div>`;
-                        $("#JobList").append(EachItem);
-                    });
-                } else {
-                    // Handle case where the server returns a fail status
-                    console.error("Failed to fetch job data:", res.data['message']);
-                }
-            } catch (error) {
-                console.error("Error fetching job data:", error);
+                    let EachItem = `<div class="recent_job_content mt-3">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="recent_job_content_text">
+                                    <a>${item['job_title']}</a>
+                                    <a href="#">${item['job_type']}</a>
+                                    <a href="#">X</a>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="recent_job_content_btn">
+                                    <a href="#">${item['salary']}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-md-9">
+                                <div class="recent_job_content_texts">
+                                    ${skillsHTML}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="recent_job_content_btn">
+                                    <a href="#">Apply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                    $("#JobList").append(EachItem);
+                });
+            } else {
+                console.error("Failed to fetch job data:", res.data['message']);
             }
+        } catch (error) {
+            console.error("Error fetching job data:", error);
         }
-    </script>
+    }
+</script>
