@@ -88,6 +88,13 @@
         <span class="side-bar-item-caption">Jobs</span>
     </a>
 
+    <a href="#permission" data-bs-toggle="collapse" class="side-bar-item">
+        <i class="bi bi-graph-up"></i>
+        <span class="side-bar-item-caption">Roles And Permission</span>
+        <span class="menu-arrow"></span>
+    </a>
+
+
 
 </div>
 
