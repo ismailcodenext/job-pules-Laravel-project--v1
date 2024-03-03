@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\EmployerController;
-use App\Http\Controllers\EmployerJobController;
-use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\EmployerJobController;
 
 
 //Admin Dashboard Work Start
@@ -84,12 +85,12 @@ Route::view('/candidate-profile','pages.dashboard.candidate-page.candidate');
 Route::post('/user-registration',[UserController::class,'UserRegistration']);
 Route::post('/user-login',[UserController::class,'UserLogin']);
 Route::get('/user-profile',[UserController::class,'UserProfile'])->middleware('auth:sanctum');
+// Route::get('/user-profile',[UserController::class,'UserProfile'])->middleware('auth:sanctum');
 Route::get('/logout',[UserController::class,'UserLogout'])->middleware('auth:sanctum');
 Route::post('/user-update',[UserController::class,'UpdateProfile'])->middleware('auth:sanctum');
 Route::post('/send-otp',[UserController::class,'SendOTPCode']);
 Route::post('/verify-otp',[UserController::class,'VerifyOTP']);
 Route::post('/reset-password',[UserController::class,'ResetPassword'])->middleware('auth:sanctum');
-
 
 
 // front-end page Route
@@ -105,7 +106,7 @@ Route::view('/sendOtp','pages.auth.send-otp-page');
 Route::view('/verifyOtp','pages.auth.verify-otp-page');
 Route::view('/resetPassword','pages.auth.reset-pass-page');
 Route::view('/userProfile','pages.dashboard.profile-page');
-Route::view('/dashboardSummary','pages.dashboard.dashboard-page');
+Route::view('/admin-dashboard','pages.dashboard.dashboard-page.dashboard');
 
 
 

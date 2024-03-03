@@ -135,7 +135,7 @@
             let res = await axios.get("/logout", HeaderToken());
             localStorage.clear();
             sessionStorage.clear();
-            window.location.href = "/userLogin";
+            window.location.href = "/employer-login";
         } catch (e) {
             errorToast(res.data['message']);
         }

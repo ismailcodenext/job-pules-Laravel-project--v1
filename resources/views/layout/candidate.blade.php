@@ -118,23 +118,6 @@
 
 
 
-{{--<script>--}}
-{{--    $('#summernote').summernote({--}}
-{{--        placeholder: 'Content',--}}
-{{--        tabsize: 2,--}}
-{{--        height: 100--}}
-{{--    });--}}
-{{--</script>--}}
-
-{{--<script>--}}
-{{--    $('#Updatesummernote').summernote({--}}
-{{--        placeholder: 'Update Content',--}}
-{{--        tabsize: 2,--}}
-{{--        height: 100--}}
-{{--    });--}}
-{{--</script>--}}
-
-
 <script>
     function MenuBarClickHandler() {
         let sideNav = document.getElementById('sideNavRef');
@@ -158,7 +141,7 @@
             let res = await axios.get("/logout", HeaderToken());
             localStorage.clear();
             sessionStorage.clear();
-            window.location.href = "/userLogin";
+            window.location.href = "/candidate-login";
         } catch (e) {
             errorToast(res.data['message']);
         }

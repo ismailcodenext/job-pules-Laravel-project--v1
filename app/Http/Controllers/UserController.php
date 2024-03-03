@@ -223,18 +223,6 @@ public function CandidateLogin(Request $request)
         return Auth::user();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     function UpdateProfile(Request $request){
 
         try{

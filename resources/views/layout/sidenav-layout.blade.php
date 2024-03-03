@@ -73,7 +73,7 @@
 
 <div id="sideNavRef" class="side-nav-open">
 
-    <a href="{{url("/dashboard")}}" class="side-bar-item">
+    <a href="{{url("/admin-dashboard")}}" class="side-bar-item">
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">Dashboard</span>
     </a>
@@ -81,6 +81,11 @@
     <a href="{{url("/Employer-Page")}}" class="side-bar-item">
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">Companies</span>
+    </a>
+
+    <a href="{{url("/Employer-Page")}}" class="side-bar-item">
+        <i class="bi bi-graph-up"></i>
+        <span class="side-bar-item-caption">Candidate</span>
     </a>
 
     <a href="{{url("/job-list-page")}}" class="side-bar-item">
