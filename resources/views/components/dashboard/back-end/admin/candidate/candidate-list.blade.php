@@ -4,10 +4,7 @@
             <div class="card px-5 py-5">
                 <div class="row justify-content-between ">
                     <div class="align-items-center col">
-                        <h4>Home Section</h4>
-                    </div>
-                    <div class="align-items-center col">
-                        <button data-bs-toggle="modal" data-bs-target="#create-modal" class="float-end btn m-0 bg-gradient-primary">Create</button>
+                        <h4>Candide Section</h4>
                     </div>
                 </div>
                 <hr class="bg-dark "/>
@@ -15,9 +12,8 @@
                     <thead>
                     <tr class="bg-light">
                         <th>No</th>
-                        <th>Company Name</th>
+                        <th>Candidate Name</th>
                         <th>Status</th>
-                        {{-- <th>Description</th> --}}
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -37,7 +33,7 @@
 
         try {
             showLoader();
-            let res=await axios.get("/list-employer",HeaderToken());
+            let res=await axios.get("/list-candidate",HeaderToken());
             hideLoader();
 
             let tableList=$("#tableList");
@@ -46,7 +42,7 @@
             tableData.DataTable().destroy();
             tableList.empty();
 
-            res.data['employerData'].forEach(function (item,index) {
+            res.data['candidateData'].forEach(function (item,index) {
                 let row=`<tr>
                     <td>${index+1}</td>
                     <td>${item['firstName']}</td>

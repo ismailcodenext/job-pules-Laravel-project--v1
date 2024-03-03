@@ -44,6 +44,7 @@ Route::post("/delete-job",[JobController::class,'jobDelete'])->middleware('auth:
 
 //Admin Back-end Route
 Route::view('Employer-Page','pages.dashboard.admin-dashboard.companies-page');
+Route::view('candidate-Page','pages.dashboard.admin-dashboard.candidate-page.candidate');
 Route::view('/job-list-page','pages.dashboard.admin-dashboard.job-page');
 
 

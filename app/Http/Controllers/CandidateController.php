@@ -11,8 +11,8 @@ class CandidateController extends Controller
     public function candidateList()
     {
         try {
-            $employerData = User::where('role', 'employer')->get();
-            return response()->json(['status' => 'success', 'employerData' => $employerData]);
+            $candidateData = User::where('role', 'candidate')->get();
+            return response()->json(['status' => 'success', 'candidateData' => $candidateData]);
         } catch (Exception $e) {
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }

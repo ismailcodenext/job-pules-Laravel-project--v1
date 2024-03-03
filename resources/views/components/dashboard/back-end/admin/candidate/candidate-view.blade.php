@@ -2,18 +2,24 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Branding Information</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Candidate Information</h5>
             </div>
             <div class="modal-body">
                 <form id="update-form">
                     <div class="container">
                         <div class="row">
                             <div class="col-12 p-1">
+                                <label class="form-label">First Name:</label>
                                 <input type="text" class="form-control" id="firstNameView">
+                                <label class="form-label">Last Name:</label>
                                 <input type="text" class="form-control" id="lastNameView">
+                                <label class="form-label">Email:</label>
                                 <input type="text" class="form-control" id="emailView">
+                                <label class="form-label">Mobile:</label>
                                 <input type="text" class="form-control" id="mobileView">
+                                <label class="form-label">Role:</label>
                                 <input type="text" class="form-control" id="roleView">
+                                <label class="form-label">Status:</label>
                                 <select class="form-select" id="statusView" aria-label="Default select example">
                                     <option value="approved">approved</option>
                                     <option value="pending">pending</option>
@@ -37,7 +43,7 @@
 
     FillSectionNameDropDown();
     async function FillSectionNameDropDown(){
-        let res = await axios.get("/list-employer",HeaderToken())
+        let res = await axios.get("/list-candidate",HeaderToken())
         res.data['employerData'].forEach(function (item,i) {
             let option=`<option>${item['status']}</option>`
             $("#statusView").append(option);
@@ -48,7 +54,7 @@
         try {
             document.getElementById('updateID').value = id;
             showLoader();
-            let res = await axios.post("/employer-by-id", { id: id.toString() }, HeaderToken());
+            let res = await axios.post("/candidate-by-id", { id: id.toString() }, HeaderToken());
             hideLoader();
 
             console.log('Received response:', res);
@@ -95,7 +101,7 @@
 
             showLoader();
 
-            let res = await axios.post("/update-employer", formData, config);
+            let res = await axios.post("/update-candidate", formData, config);
             hideLoader();
 
             if (res.data.status === "success") {

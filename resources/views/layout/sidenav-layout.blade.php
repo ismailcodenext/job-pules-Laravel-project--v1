@@ -83,7 +83,7 @@
         <span class="side-bar-item-caption">Companies</span>
     </a>
 
-    <a href="{{url("/Employer-Page")}}" class="side-bar-item">
+    <a href="{{url("/candidate-Page")}}" class="side-bar-item">
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">Candidate</span>
     </a>
