@@ -155,22 +155,24 @@
                             </div>
                             <div class="col-12 p-1">
                                 <label class="form-label">Skills *</label>
-                                <input type="text" class="form-control" id="jobSkills" name="jobSkills" required>
+                                <textarea class="form-control" id="summernote" cols="30" rows="20"></textarea>
                                 <small class="form-text text-muted">Separate skills with commas (e.g., HTML, CSS, JavaScript)</small>
-                            </div>
+                             </div>
+                             
                             <div class="col-12 p-1">
                                 <label class="form-label">Salary</label>
                                 <input type="text" class="form-control" id="salary" name="salary">
                             </div>
                             <label class="form-label">Job Category *</label>
                             <select class="form-control" id="jobCategory" name="jobCategory" required>
-                                <option value="category1">Developers</option>
-                                <option value="category2">Designers</option>
-                                <option value="category2">Marketers</option>
-                                <option value="category2">UI/UX</option>
-                                <option value="category2">Others</option>
-                                <!-- Add more categories if needed -->
+                               <option value="category1">Developers</option>
+                               <option value="category2">Designers</option>
+                               <option value="category3">Marketers</option>
+                               <option value="category4">UI/UX</option>
+                               <option value="category5">Others</option>
+                               <!-- Add more categories if needed -->
                             </select>
+                            
                             <input id="status" value="pending" class="form-control" type="hidden"/>
                         </div>
                     </div>
@@ -193,14 +195,12 @@
             let location = document.getElementById('location').value;
             let deadline = document.getElementById('deadline').value;
             let jobType = document.getElementById('jobType').value;
-            let jobSkills = document.getElementById('jobSkills').value.split(',').map(skill => skill.trim());
+            let summernoteContent = $('#summernote').summernote('code');
             let salary = document.getElementById('salary').value;
             let jobCategory = document.getElementById('jobCategory').value;
             let status = document.getElementById('status').value;
 
-            if (jobTitle.length === 0 || jobDescription.length === 0 || location.length === 0 || deadline.length === 0 || jobType.length === 0 || jobSkills.length === 0 || jobCategory.length === 0 || status.length === 0) {
-                errorToast("Please fill in all required fields.");
-            } else {
+          
                 document.getElementById('modal-close').click();
                 let formData = new FormData();
                 formData.append('jobTitle', jobTitle);
@@ -209,9 +209,7 @@
                 formData.append('location', location);
                 formData.append('deadline', deadline);
                 formData.append('jobType', jobType);
-                jobSkills.forEach(skill => {
-                    formData.append('jobSkills[]', skill);
-                });
+                formData.append('job_skills', summernoteContent);
                 formData.append('salary', salary);
                 formData.append('jobCategory', jobCategory);
                 formData.append('status', status);
@@ -234,7 +232,7 @@
                 } else {
                     errorToast(res.data['message'])
                 }
-            }
+            
 
         } catch (e) {
             unauthorized(e.response.status)

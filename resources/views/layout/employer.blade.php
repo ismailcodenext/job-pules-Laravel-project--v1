@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>@yield('title') | </title>
+    <title>Dashboard | @yield('title')</title>
 
     <link rel="icon" type="image/x-icon" href="{{asset('/favicon.ico')}}" />
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
@@ -94,22 +94,27 @@
 </div>
 
 
+<script>
+    $('#summernote').summernote({
+      placeholder: 'Content',
+      tabsize: 2,
+      height: 110
+    });
+  </script>
 
-{{--<script>--}}
-{{--    $('#summernote').summernote({--}}
-{{--        placeholder: 'Content',--}}
-{{--        tabsize: 2,--}}
-{{--        height: 100--}}
-{{--    });--}}
-{{--</script>--}}
+<script>
+    $(document).ready(function() {
+       $('#summernote').summernote();
+    });
+ </script>
 
-{{--<script>--}}
-{{--    $('#Updatesummernote').summernote({--}}
-{{--        placeholder: 'Update Content',--}}
-{{--        tabsize: 2,--}}
-{{--        height: 100--}}
-{{--    });--}}
-{{--</script>--}}
+<script>
+    $('#Updatesummernote').summernote({
+      placeholder: 'View Content',
+      tabsize: 2,
+      height: 110
+    });
+  </script>
 
 
 <script>

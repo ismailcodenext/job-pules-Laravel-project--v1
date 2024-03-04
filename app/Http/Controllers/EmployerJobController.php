@@ -22,26 +22,12 @@ class EmployerJobController extends Controller
         }
     }
 
-
-    public function jobCreate(Request $request): JsonResponse
+    public function jobCreate(Request $request)
     {
         try {
-            $request->validate([
-                'jobTitle' => 'required|string|max:255',
-                'jobDescription' => 'required|string',
-                'benefits' => 'nullable|string',
-                'location' => 'required|string|max:255',
-                'deadline' => 'required|date',
-                'jobType' => 'required|string', // Adjust as needed
-                'jobSkills' => 'required|array', // Validate that jobSkills is an array
-                'salary' => 'nullable|string', // You might want to adjust this based on your salary format
-                'status' => 'required|string', // You might want to adjust this based on your salary format
-                'jobCategory' => 'required|string', // Validate that jobCategory is a string
-            ]);
 
-            // Convert jobSkills to a JSON string
-            $jobSkills = json_encode($request->input('jobSkills'));
-
+            $user_id = Auth::id();
+    
             // Create a new job post
             Job::create([
                 'job_title' => $request->input('jobTitle'),
@@ -50,18 +36,19 @@ class EmployerJobController extends Controller
                 'location' => $request->input('location'),
                 'deadline' => $request->input('deadline'),
                 'job_type' => $request->input('jobType'),
-                'job_skills' => $jobSkills,
+                'job_skills' => $request->input('job_skills'), // Corrected field name
                 'salary' => $request->input('salary'),
                 'status' => $request->input('status'),
-                'job_category' => $request->input('jobCategory'), // Add job_category field
-                'user_id' => auth()->id(), // Assuming the user is authenticated
+                'job_category' => $request->input('jobCategory'),
+                'user_id' => $user_id
             ]);
-
+    
             return response()->json(['status' => 'success', 'message' => 'Job post created successfully']);
         } catch (\Exception $e) {
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
     }
+    
 
 
 

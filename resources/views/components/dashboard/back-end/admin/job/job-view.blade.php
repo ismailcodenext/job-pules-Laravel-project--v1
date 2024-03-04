@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-12 p-1">
                                     <label class="form-label">Skills *</label>
-                                    <input type="text" class="form-control" id="jobSkills" name="jobSkills" required>
+                                    <textarea class="form-control" id="Updatesummernote" cols="30" rows="20"></textarea>
                                     <small class="form-text text-muted">Separate skills with commas (e.g., HTML, CSS, JavaScript)</small>
                                 </div>
                                 <div class="col-12 p-1">
@@ -100,7 +100,8 @@
                 document.getElementById('location').value = data.location;
                 document.getElementById('deadline').value = data.deadline;
                 document.getElementById('jobType').value = data.job_type;
-                document.getElementById('jobSkills').value = data.job_skills;
+                // Set Summernote content
+                $('#Updatesummernote').summernote('code', data.job_skills);
                 document.getElementById('salary').value = data.salary;
                 document.getElementById('jobCategory').value = data.job_category;
                 document.getElementById('statusView').value = data.status;

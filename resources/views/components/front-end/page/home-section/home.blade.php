@@ -119,10 +119,7 @@
                                         <div class="row mt-5">
                                             <div class="col-md-9">
                                                 <div class="recent_job_content_texts">
-                                                    <a href="#">php</a>
-                                                    <a href="#">laravel</a>
-                                                    <a href="#">Vue JS</a>
-                                                    <a href="#">mysql</a>
+                                                    ${item['job_skills']}
                                                 </div>
                                             </div>
                                             <div class="col-md-3">

@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('location');
             $table->timestamp('deadline');
             $table->enum('status', ['pending', 'approved'])->default('pending');
-            $table->string('job_type'); // New field for job type
-            $table->json('job_skills')->nullable(); // New field for job skills as JSON array
+            $table->string('job_type');
+            $table->string('job_skills')->nullable();
             $table->string('job_category')->nullable();
-            $table->decimal('salary', 10, 2)->nullable(); // New field for salary
+            $table->decimal('salary', 10, 2)->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamp('created_at')->useCurrent();
