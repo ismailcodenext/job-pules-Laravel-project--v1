@@ -8,6 +8,7 @@ use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\EmployerJobController;
+use App\Http\Controllers\CandidateProfileController;
 
 
 //Admin Dashboard Work Start
@@ -74,11 +75,11 @@ Route::post("/delete-job",[EmployerJobController::class,'jobDelete'])->middlewar
 
 //----------------Candidate Dashboard Work Start---------------------------//
 
-Route::post("/create-profile",[EmployerJobController::class,'ProfileCreate'])->middleware('auth:sanctum');
-Route::get("/list-profile",[EmployerJobController::class,'ProfileList'])->middleware('auth:sanctum');
-Route::post("/profile-by-id",[EmployerJobController::class,'ProfileById'])->middleware('auth:sanctum');
-Route::post("/update-profile",[EmployerJobController::class,'ProfileUpdate'])->middleware('auth:sanctum');
-Route::post("/delete-profile",[EmployerJobController::class,'ProfileDelete'])->middleware('auth:sanctum');
+Route::post("/create-profile",[CandidateProfileController::class,'ProfileCreate'])->middleware('auth:sanctum');
+Route::get("/list-profile",[CandidateProfileController::class,'ProfileList'])->middleware('auth:sanctum');
+Route::post("/profile-by-id",[CandidateProfileController::class,'ProfileById'])->middleware('auth:sanctum');
+Route::post("/update-profile",[CandidateProfileController::class,'ProfileUpdate'])->middleware('auth:sanctum');
+Route::post("/delete-profile",[CandidateProfileController::class,'ProfileDelete'])->middleware('auth:sanctum');
 
 
 //candidate dashboard

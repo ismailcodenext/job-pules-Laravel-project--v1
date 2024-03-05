@@ -14,6 +14,7 @@ class CandidateProfile extends Model
         'father_name',
         'mother_name',
         'dof',
+        'blood_group',
         'nid_number',
         'passport_no',
         'cell_no',
@@ -27,3 +28,4 @@ class CandidateProfile extends Model
         'portfolio_website'
     ];
 }
+

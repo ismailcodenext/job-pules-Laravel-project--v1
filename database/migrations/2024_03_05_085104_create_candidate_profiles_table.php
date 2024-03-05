@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('father_name');
             $table->string('mother_name');
             $table->date('dof');
+            $table->string('blood_group');
             $table->string('nid_number');
             $table->string('passport_no')->nullable();
             $table->string('cell_no')->nullable();
