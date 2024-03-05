@@ -83,9 +83,16 @@
         <span class="side-bar-item-caption">Home</span>
     </a>
 
-    <a href="{{url("/")}}" class="side-bar-item">
+    <a href="{{url("")}}" class="side-bar-item">
         <i class="bi bi-list-nested"></i>
         <span class="side-bar-item-caption">Job</span>
+    </a>
+
+   
+
+    <a href="{{url("/candidate-profile")}}" class="side-bar-item">
+        <i class="bi-person"></i>
+        <span class="side-bar-item-caption">Profile</span>
     </a>
 
    

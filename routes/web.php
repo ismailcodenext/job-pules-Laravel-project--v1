@@ -53,7 +53,8 @@ Route::view('/job-list-page','pages.dashboard.admin-dashboard.job-page');
 
 //----------------Employer Dashboard Work Start---------------------------//
 
-//employer dashboard
+
+//employer front-page in dashboard
 Route::view('/employer-profile','pages.dashboard.employer-page.employer');
 
 //employer job create dashboard
@@ -72,6 +73,13 @@ Route::post("/delete-job",[EmployerJobController::class,'jobDelete'])->middlewar
 
 
 //----------------Candidate Dashboard Work Start---------------------------//
+
+Route::post("/create-profile",[EmployerJobController::class,'ProfileCreate'])->middleware('auth:sanctum');
+Route::get("/list-profile",[EmployerJobController::class,'ProfileList'])->middleware('auth:sanctum');
+Route::post("/profile-by-id",[EmployerJobController::class,'ProfileById'])->middleware('auth:sanctum');
+Route::post("/update-profile",[EmployerJobController::class,'ProfileUpdate'])->middleware('auth:sanctum');
+Route::post("/delete-profile",[EmployerJobController::class,'ProfileDelete'])->middleware('auth:sanctum');
+
 
 //candidate dashboard
 Route::view('/candidate-profile','pages.dashboard.candidate-page.candidate');

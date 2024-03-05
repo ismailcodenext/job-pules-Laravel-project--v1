@@ -1,80 +1,128 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 col-lg-12">
-            <div class="card animated fadeIn w-100 p-3">
-                <div class="card-body">
-                    <h4>User Profile</h4>
-                    <hr/>
-                    <div class="container-fluid m-0 p-0">
-                        <div class="row m-0 p-0">
-                            <div class="col-md-4 p-2">
-                                <label>Email Address</label>
-                                <input readonly id="email" placeholder="User Email" class="form-control" type="email"/>
+<div class="modal animated zoomIn" id="create-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLabel">Basic Demographic Information</h6>
+            </div>
+            <div class="modal-body">
+                <form id="save-form">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 p-1">
+                                <label class="form-label">Job Title *</label>
+                                <input type="text" class="form-control" id="jobTitle" name="jobTitle" required>
                             </div>
-                            <div class="col-md-4 p-2">
-                                <label>First Name</label>
-                                <input id="firstName" placeholder="First Name" class="form-control" type="text"/>
+                            <div class="col-12 p-1">
+                                <label class="form-label">Job Description *</label>
+                                <textarea class="form-control" id="jobDescription" name="jobDescription" required></textarea>
                             </div>
-                            <div class="col-md-4 p-2">
-                                <label>Last Name</label>
-                                <input id="lastName" placeholder="Last Name" class="form-control" type="text"/>
+                            <div class="col-12 p-1">
+                                <label class="form-label">Benefits</label>
+                                <textarea class="form-control" id="benefits" name="benefits"></textarea>
                             </div>
-                            <div class="col-md-4 p-2">
-                                <label>Mobile Number</label>
-                                <input id="mobile" placeholder="Mobile" class="form-control" type="mobile"/>
+                            <div class="col-12 p-1">
+                                <label class="form-label">Location *</label>
+                                <input type="text" class="form-control" id="location" name="location" required>
                             </div>
-                        </div>
-                        <div class="row m-0 p-0">
-                            <div class="col-md-4 p-2">
-                                <button onclick="onUpdate()" class="btn mt-3 w-100  bg-gradient-primary">Update</button>
+                            <div class="col-12 p-1">
+                                <label class="form-label">Deadline *</label>
+                                <input type="datetime-local" class="form-control" id="deadline" name="deadline" required>
                             </div>
+                            <div class="col-12 p-1">
+                                <label class="form-label">Job Type *</label>
+                                <select class="form-control" id="jobType" name="jobType" required>
+                                    <option value="Full Time">Full Time</option>
+                                    <option value="Part Time">Part Time</option>
+                                    <option value="Remote">Remote</option>
+                                    <!-- Add more job types if needed -->
+                                </select>
+                            </div>
+                            <div class="col-12 p-1">
+                                <label class="form-label">Skills *</label>
+                                <textarea class="form-control" id="summernote" cols="30" rows="20"></textarea>
+                                <small class="form-text text-muted">Separate skills with commas (e.g., HTML, CSS, JavaScript)</small>
+                             </div>
+                             
+                            <div class="col-12 p-1">
+                                <label class="form-label">Salary</label>
+                                <input type="text" class="form-control" id="salary" name="salary">
+                            </div>
+                            <label class="form-label">Job Category *</label>
+                            <select class="form-control" id="jobCategory" name="jobCategory" required>
+                               <option value="category1">Developers</option>
+                               <option value="category2">Designers</option>
+                               <option value="category3">Marketers</option>
+                               <option value="category4">UI/UX</option>
+                               <option value="category5">Others</option>
+                               <!-- Add more categories if needed -->
+                            </select>
+                            
+                            <input id="status" value="pending" class="form-control" type="hidden"/>
                         </div>
                     </div>
-                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-close" class="btn bg-gradient-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                <button onclick="Save()" id="save-btn" class="btn bg-gradient-success">Save</button>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+    async function Save() {
+        try {
+            let jobTitle = document.getElementById('jobTitle').value;
+            let jobDescription = document.getElementById('jobDescription').value;
+            let benefits = document.getElementById('benefits').value;
+            let location = document.getElementById('location').value;
+            let deadline = document.getElementById('deadline').value;
+            let jobType = document.getElementById('jobType').value;
+            let summernoteContent = $('#summernote').summernote('code');
+            let salary = document.getElementById('salary').value;
+            let jobCategory = document.getElementById('jobCategory').value;
+            let status = document.getElementById('status').value;
 
-    getProfile();
-    async function getProfile(){
-        try{
-            showLoader();
-            let res=await axios.get("/user-profile",HeaderToken());
-            hideLoader();
-            document.getElementById('email').value=res.data['email'];
-            document.getElementById('firstName').value=res.data['firstName']
-            document.getElementById('lastName').value=res.data['lastName']
-            document.getElementById('mobile').value=res.data['mobile']
+          
+                document.getElementById('modal-close').click();
+                let formData = new FormData();
+                formData.append('jobTitle', jobTitle);
+                formData.append('jobDescription', jobDescription);
+                formData.append('benefits', benefits);
+                formData.append('location', location);
+                formData.append('deadline', deadline);
+                formData.append('jobType', jobType);
+                formData.append('job_skills', summernoteContent);
+                formData.append('salary', salary);
+                formData.append('jobCategory', jobCategory);
+                formData.append('status', status);
 
-        }catch (e) {
+                const config = {
+                    headers: {
+                        'content-type': 'multipart/form-data',
+                        ...HeaderToken().headers
+                    }
+                }
+
+                showLoader();
+                let res = await axios.post("", formData, config);
+                hideLoader();
+
+                if (res.data['status'] === "success") {
+                    successToast(res.data['message']);
+                    document.getElementById("save-form").reset();
+                    await getList();
+                } else {
+                    errorToast(res.data['message'])
+                }
+            
+
+        } catch (e) {
             unauthorized(e.response.status)
         }
     }
-
-
-    async function onUpdate(){
-        let PostBody={
-            "firstName":document.getElementById('firstName').value,
-            "lastName":document.getElementById('lastName').value,
-            "mobile":document.getElementById('mobile').value,
-        }
-        showLoader();
-        let res=await axios.post("/user-update",PostBody,HeaderToken());
-        hideLoader();
-        if(res.data['status']==="success"){
-            successToast(res.data['message'])
-            await getProfile();
-        }
-        else {
-            successToast(res.data['message'])
-        }
-
-
-    }
-
-
 </script>
+
+
 
