@@ -27,7 +27,7 @@ class EmployerJobController extends Controller
         try {
 
             $user_id = Auth::id();
-    
+
             // Create a new job post
             Job::create([
                 'job_title' => $request->input('jobTitle'),
@@ -36,19 +36,19 @@ class EmployerJobController extends Controller
                 'location' => $request->input('location'),
                 'deadline' => $request->input('deadline'),
                 'job_type' => $request->input('jobType'),
-                'job_skills' => $request->input('job_skills'), // Corrected field name
+                'job_skills' => html_entity_decode($request->input('job_skills')), // Decode HTML entities
                 'salary' => $request->input('salary'),
                 'status' => $request->input('status'),
                 'job_category' => $request->input('jobCategory'),
                 'user_id' => $user_id
             ]);
-    
+
             return response()->json(['status' => 'success', 'message' => 'Job post created successfully']);
         } catch (\Exception $e) {
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
     }
-    
+
 
 
 

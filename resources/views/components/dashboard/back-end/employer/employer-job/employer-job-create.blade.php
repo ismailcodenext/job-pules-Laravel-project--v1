@@ -155,10 +155,10 @@
                             </div>
                             <div class="col-12 p-1">
                                 <label class="form-label">Skills *</label>
-                                <textarea class="form-control" id="summernote" cols="30" rows="20"></textarea>
+                                <input class="form-control" id="jobSkill">
                                 <small class="form-text text-muted">Separate skills with commas (e.g., HTML, CSS, JavaScript)</small>
                              </div>
-                             
+
                             <div class="col-12 p-1">
                                 <label class="form-label">Salary</label>
                                 <input type="text" class="form-control" id="salary" name="salary">
@@ -172,7 +172,7 @@
                                <option value="category5">Others</option>
                                <!-- Add more categories if needed -->
                             </select>
-                            
+
                             <input id="status" value="pending" class="form-control" type="hidden"/>
                         </div>
                     </div>
@@ -195,12 +195,14 @@
             let location = document.getElementById('location').value;
             let deadline = document.getElementById('deadline').value;
             let jobType = document.getElementById('jobType').value;
-            let summernoteContent = $('#summernote').summernote('code');
             let salary = document.getElementById('salary').value;
             let jobCategory = document.getElementById('jobCategory').value;
             let status = document.getElementById('status').value;
+            let jobSkillInput = document.getElementById('jobSkill');
+            let jobSkills = jobSkillInput.value.split(',').map(skill => skill.trim());
+            let formattedSkills = jobSkills.map(skill => `<a href="#"> ${skill}</a>`).join(' ');
 
-          
+
                 document.getElementById('modal-close').click();
                 let formData = new FormData();
                 formData.append('jobTitle', jobTitle);
@@ -209,7 +211,7 @@
                 formData.append('location', location);
                 formData.append('deadline', deadline);
                 formData.append('jobType', jobType);
-                formData.append('job_skills', summernoteContent);
+                formData.append('job_skills', formattedSkills);
                 formData.append('salary', salary);
                 formData.append('jobCategory', jobCategory);
                 formData.append('status', status);
@@ -232,7 +234,7 @@
                 } else {
                     errorToast(res.data['message'])
                 }
-            
+
 
         } catch (e) {
             unauthorized(e.response.status)

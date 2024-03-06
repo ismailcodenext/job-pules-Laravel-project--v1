@@ -94,27 +94,27 @@
 </div>
 
 
-<script>
-    $('#summernote').summernote({
-      placeholder: 'Content',
-      tabsize: 2,
-      height: 110
-    });
-  </script>
+{{--<script>--}}
+{{--    $('#summernote').summernote({--}}
+{{--      placeholder: 'Content',--}}
+{{--      tabsize: 2,--}}
+{{--      height: 110--}}
+{{--    });--}}
+{{--  </script>--}}
 
-<script>
-    $(document).ready(function() {
-       $('#summernote').summernote();
-    });
- </script>
+{{--<script>--}}
+{{--    $(document).ready(function() {--}}
+{{--       $('#summernote').summernote();--}}
+{{--    });--}}
+{{-- </script>--}}
 
-<script>
-    $('#Updatesummernote').summernote({
-      placeholder: 'View Content',
-      tabsize: 2,
-      height: 110
-    });
-  </script>
+{{--<script>--}}
+{{--    $('#Updatesummernote').summernote({--}}
+{{--      placeholder: 'View Content',--}}
+{{--      tabsize: 2,--}}
+{{--      height: 110--}}
+{{--    });--}}
+{{--  </script>--}}
 
 
 <script>

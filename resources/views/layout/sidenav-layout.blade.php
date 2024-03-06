@@ -94,10 +94,17 @@
     </a>
 
     <a href="#permission" data-bs-toggle="collapse" class="side-bar-item">
-        <i class="bi bi-graph-up"></i>
+        <i class="bi-person-bounding-box"></i>
         <span class="side-bar-item-caption">Roles And Permission</span>
+        <i class="bi-arrow-down-short"></i>
+{{--        <span class="menu-arrow"></span>--}}
+    </a>
+    <a href="{{url("/permission-page")}}" class="collapse" id="permission">
+        <i class="bi bi-graph-up"></i>
+        <span class="side-bar-item-caption">All Permission</span>
         <span class="menu-arrow"></span>
     </a>
+
 
 
 

@@ -9,6 +9,8 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\EmployerJobController;
 use App\Http\Controllers\CandidateProfileController;
+use App\Http\Controllers\RoleController;
+
 
 
 //Admin Dashboard Work Start
@@ -42,11 +44,17 @@ Route::post("/job-company-by-id",[JobController::class,'jobCompanyById'])->middl
 Route::post("/update-job-company",[JobController::class,'jobCompanyUpdate'])->middleware('auth:sanctum');
 Route::post("/delete-job",[JobController::class,'jobDelete'])->middleware('auth:sanctum');
 
-
+// Permission Page Api Route
+Route::get("/list-permission",[RoleController::class,'permissionRoleList'])->middleware('auth:sanctum');
+Route::post("/create-permission",[RoleController::class,'permissionCreate'])->middleware('auth:sanctum');
+Route::post("/delete-permission",[RoleController::class,'permissionDelete'])->middleware('auth:sanctum');
+Route::post("/permission-by-id",[RoleController::class,'permissionById'])->middleware('auth:sanctum');
+Route::post("/update-permission",[RoleController::class,'permissionUpdate'])->middleware('auth:sanctum');
 //Admin Back-end Route
 Route::view('Employer-Page','pages.dashboard.admin-dashboard.companies-page');
 Route::view('candidate-Page','pages.dashboard.admin-dashboard.candidate-page.candidate');
 Route::view('/job-list-page','pages.dashboard.admin-dashboard.job-page');
+Route::view('permission-page','pages.dashboard.admin-dashboard.permission-page.permission-page');
 
 
 //----------------Admin Dashboard Work End---------------------------//

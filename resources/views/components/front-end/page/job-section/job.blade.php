@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="product_menu_tab_content active"  id="JobList">
-                              
+
                             </div>
                         </div>
                     </div>
@@ -63,38 +63,112 @@
     <!-- Job Content End -->
 
 
-    
-   
-<script>
-    Joblist();
+{{--    <script>--}}
+{{--        Joblist();--}}
 
-    async function Joblist() {
-        try {
-            let res = await axios.get("/list-job-data");
-            $("#JobList").empty();
+{{--        async function Joblist() {--}}
+{{--            try {--}}
+{{--                let res = await axios.get("/list-job-data");--}}
+{{--                $("#JobList").empty();--}}
 
-            if (res.data['status'] === 'success') {
-                const jobListData = res.data['jobListData'];
+{{--                if (res.data['status'] === 'success') {--}}
+{{--                    const jobListData = res.data['jobListData'];--}}
 
-                if (jobListData.length === 0) {
-                    console.warn("No job data found");
-                    return;
-                }
+{{--                    if (jobListData.length === 0) {--}}
+{{--                        console.warn("No job data found");--}}
+{{--                        return;--}}
+{{--                    }--}}
 
-                jobListData.forEach((item, i) => {
-                    let skillsHTML = "";
+{{--                    jobListData.forEach((item, i) => {--}}
+{{--                        let skillsHTML = "";--}}
 
-                    // Check if job_skills is an array and not empty
-                    if (Array.isArray(item['job_skills']) && item['job_skills'].length > 0) {
-                        item['job_skills'].forEach(skill => {
-                            skillsHTML += `<a href="#">${skill}</a>`;
-                        });
-                    } else {
-                        // Handle case where job_skills is not an array or is empty
-                        skillsHTML = '<span>No skills listed</span>';
+{{--                        // Check if job_skills is an array--}}
+{{--                        if (Array.isArray(item['job_skills']) && item['job_skills'].length > 0) {--}}
+{{--                            // Loop through skills and create a separate div for each skill--}}
+{{--                            item['job_skills'].forEach(skill => {--}}
+{{--                                skillsHTML += `<div class="job-skill"><a href="#">${skill}</a></div>`;--}}
+{{--                            });--}}
+{{--                        } else if (item['job_skills'] !== null) {--}}
+{{--                            // Handle case where job_skills is not an array but a single skill--}}
+{{--                            skillsHTML = `<div class="job-skill"><a href="#">${item['job_skills']}</a></div>`;--}}
+{{--                        } else {--}}
+{{--                            // Handle case where job_skills is null--}}
+{{--                            skillsHTML = '<div class="job-skill"><span>No skills listed</span></div>';--}}
+{{--                        }--}}
+
+{{--                        let EachItem = `<div class="recent_job_content mt-3">--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-md-9">--}}
+{{--                                <div class="recent_job_content_text">--}}
+{{--                                    <a>${item['job_title']}</a>--}}
+{{--                                    <a href="#">${item['job_type']}</a>--}}
+{{--                                    <a href="#">X</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-3">--}}
+{{--                                <div class="recent_job_content_btn">--}}
+{{--                                    <a href="#">${item['salary']}</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="row mt-5">--}}
+{{--                            <div class="col-md-9">--}}
+{{--                                <div class="recent_job_content_texts">--}}
+{{--                                    ${skillsHTML}--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-3">--}}
+{{--                                <div class="recent_job_content_btn">--}}
+{{--                                    <a href="#">Apply</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>`;--}}
+{{--                        $("#JobList").append(EachItem);--}}
+{{--                    });--}}
+{{--                } else {--}}
+{{--                    console.error("Failed to fetch job data:", res.data['message']);--}}
+{{--                }--}}
+{{--            } catch (error) {--}}
+{{--                console.error("Error fetching job data:", error);--}}
+{{--            }--}}
+{{--        }--}}
+{{--    </script>--}}
+
+    <script>
+        Joblist();
+
+        async function Joblist() {
+            try {
+                let res = await axios.get("/list-job-data");
+                $("#JobList").empty();
+
+                if (res.data['status'] === 'success') {
+                    const jobListData = res.data['jobListData'];
+
+                    if (jobListData.length === 0) {
+                        console.warn("No job data found");
+                        return;
                     }
 
-                    let EachItem = `<div class="recent_job_content mt-3">
+                    jobListData.forEach((item, i) => {
+                        let skillsHTML = "";
+
+                        // Check if job_skills is an array
+                        if (Array.isArray(item['job_skills']) && item['job_skills'].length > 0) {
+                            // Display each skill as a separate <a> tag
+                            item['job_skills'].forEach(skill => {
+                                skillsHTML += `<a href="#" class="badge bg-secondary">${skill}</a>`;
+                            });
+                        } else if (item['job_skills'] !== null) {
+                            // Handle case where job_skills is not an array but a single skill
+                            skillsHTML = `<a href="#" class="badge bg-secondary">${item['job_skills']}</a>`;
+                        } else {
+                            // Handle case where job_skills is null
+                            skillsHTML = 'No skills listed';
+                        }
+
+                        let EachItem = `<div class="recent_job_content mt-3">
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="recent_job_content_text">
@@ -122,13 +196,16 @@
                             </div>
                         </div>
                     </div>`;
-                    $("#JobList").append(EachItem);
-                });
-            } else {
-                console.error("Failed to fetch job data:", res.data['message']);
+                        $("#JobList").append(EachItem);
+                    });
+                } else {
+                    console.error("Failed to fetch job data:", res.data['message']);
+                }
+            } catch (error) {
+                console.error("Error fetching job data:", error);
             }
-        } catch (error) {
-            console.error("Error fetching job data:", error);
         }
-    }
-</script>
+    </script>
+
+
+
