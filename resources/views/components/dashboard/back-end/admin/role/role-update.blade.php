@@ -2,25 +2,15 @@
     <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Permission</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update Role</h5>
             </div>
             <div class="modal-body">
                 <form id="update-form">
                     <div class="container">
                         <div class="row">
                             <div class="col-12 p-1">
-                                <label class="form-label">Permission Name*</label>
-                                <input type="text" class="form-control" id="permissionNameUpdate">
-                            </div>
-                            <div class="col-12 p-1">
-                                <label class="form-label">Group Name *</label>
-                                <select class="form-control" id="permissionGroupUpdate" name="permissionGroupUpdate" required>
-                                    <option value="Dashboard">Dashboard</option>
-                                    <option value="Employer">Employer</option>
-                                    <option value="Candidate">Candidate</option>
-                                    <option value="Jobs">Jobs</option>
-                                    <!-- Add more job types if needed -->
-                                </select>
+                                <label class="form-label">Role Name*</label>
+                                <input type="text" class="form-control" id="roleNameUpdate">
                                 <input type="text" class="d-none" id="updateID">
                             </div>
                         </div>
@@ -42,10 +32,9 @@
         try {
             document.getElementById('updateID').value=id;
             showLoader();
-            let res = await axios.post("/permission-by-id", { id: id.toString() }, HeaderToken());
+            let res = await axios.post("/role-by-id", { id: id.toString() }, HeaderToken());
             hideLoader();
-            document.getElementById('permissionNameUpdate').value=res.data['rows']['name'];
-            document.getElementById('permissionGroupUpdate').value=res.data['rows']['group_name'];
+            document.getElementById('roleNameUpdate').value=res.data['rows']['name'];
         }catch (e) {
             unauthorized(e.response.status)
         }
@@ -56,13 +45,12 @@
 
         try {
 
-            let permissionNameUpdate = document.getElementById('permissionNameUpdate').value;
-            let permissionGroupUpdate = document.getElementById('permissionGroupUpdate').value;
+            let roleNameUpdate = document.getElementById('roleNameUpdate').value;
             let updateID = document.getElementById('updateID').value;
 
             document.getElementById('update-modal-close').click();
             showLoader();
-            let res = await axios.post("/update-permission",{name:permissionNameUpdate,group_name:permissionGroupUpdate,id:updateID},HeaderToken())
+            let res = await axios.post("/update-role",{name:roleNameUpdate,id:updateID},HeaderToken())
             hideLoader();
 
             if(res.data['status']==="success"){

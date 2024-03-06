@@ -50,11 +50,21 @@ Route::post("/create-permission",[RoleController::class,'permissionCreate'])->mi
 Route::post("/delete-permission",[RoleController::class,'permissionDelete'])->middleware('auth:sanctum');
 Route::post("/permission-by-id",[RoleController::class,'permissionById'])->middleware('auth:sanctum');
 Route::post("/update-permission",[RoleController::class,'permissionUpdate'])->middleware('auth:sanctum');
+
+// Role Page Api Route
+Route::get("/list-role",[RoleController::class,'roleList'])->middleware('auth:sanctum');
+Route::post("/create-role",[RoleController::class,'roleCreate'])->middleware('auth:sanctum');
+Route::post("/delete-role",[RoleController::class,'roleDelete'])->middleware('auth:sanctum');
+Route::post("/role-by-id",[RoleController::class,'roleById'])->middleware('auth:sanctum');
+Route::post("/update-role",[RoleController::class,'roleUpdate'])->middleware('auth:sanctum');
+
 //Admin Back-end Route
 Route::view('Employer-Page','pages.dashboard.admin-dashboard.companies-page');
 Route::view('candidate-Page','pages.dashboard.admin-dashboard.candidate-page.candidate');
 Route::view('/job-list-page','pages.dashboard.admin-dashboard.job-page');
 Route::view('permission-page','pages.dashboard.admin-dashboard.permission-page.permission-page');
+Route::view('role-page','pages.dashboard.admin-dashboard.role-page.role-page');
+Route::view('role-in-permission-page','pages.dashboard.admin-dashboard.role-in-permission-page.role-in-permission-page');
 
 
 //----------------Admin Dashboard Work End---------------------------//

@@ -103,6 +103,11 @@
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">All Permission</span>
         <span class="menu-arrow"></span>
+    </a><br>
+    <a href="{{url("/role-page")}}" class="collapse" id="permission">
+        <i class="bi bi-graph-up"></i>
+        <span class="side-bar-item-caption">All Role</span>
+        <span class="menu-arrow"></span>
     </a>
 
 

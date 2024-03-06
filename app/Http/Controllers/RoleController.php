@@ -13,7 +13,6 @@ class RoleController extends Controller
     //
     public function permissionRoleList(){
         try {
-            $user_id = Auth::id();
             $permissionData = Permission::all();
             return response()->json(['status' => 'success', 'permissionData' => $permissionData]);
         } catch (Exception $e) {
@@ -31,7 +30,7 @@ class RoleController extends Controller
                 'name'=>$request->input('name'),
                 'group_name'=>$request->input('group_name'),
             ]);
-            return response()->json(['status' => 'success', 'message' => "Group Name Is Create Successful"]);
+            return response()->json(['status' => 'success', 'message' => "Permission Is Create Successful"]);
         }catch (Exception $e){
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
@@ -83,4 +82,77 @@ class RoleController extends Controller
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
     }
+
+    public function roleList(){
+        try {
+            $roleData = Role::all();
+            return response()->json(['status' => 'success', 'roleData' => $roleData]);
+        } catch (Exception $e) {
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function roleCreate(Request $request){
+        try {
+            $request->validate([
+                'name' => 'required|string|'
+            ]);
+            Role::create([
+                'name'=>$request->input('name')
+            ]);
+            return response()->json(['status' => 'success', 'message' => "Role Is Create Successful"]);
+        }catch (Exception $e){
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function roleById(Request $request){
+        try {
+            $request->validate(["id" => 'required|string']);
+            $rows = Role::where('id', $request->input('id'))->first();
+            return response()->json(['status' => 'success', 'rows' => $rows]);
+        } catch (Exception $e) {
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function roleUpdate(Request $request){
+        try {
+            $request->validate([
+                'id' => 'required|min:1',
+                'name' => 'required|string'
+            ]);
+
+            $role_id = $request->input('id');
+            Role::where('id',$role_id)->update([
+                'name' => $request->input('name')
+            ]);
+
+            return response()->json(['status' => 'success', 'message' => 'Role Name updated successfully']);
+
+        } catch (Exception $e) {
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function roleDelete(Request $request){
+        try {
+            $request->validate([
+                'id' => 'required|string|min:1'
+            ]);
+            $role_id=$request->input('id');
+            Role::where('id',$role_id)->delete();
+            return response()->json(['status' => 'success', 'message' => "Role Delete Successful"]);
+        }catch (Exception $e){
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+        }
+    }
+
+
+
+
+
+
+
+
 }
