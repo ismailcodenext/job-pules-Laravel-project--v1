@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class EducationInformation extends Model
 {
     use HasFactory;
-
-    
     protected $fillable = [
         'degreeType',
         'schoolName',
@@ -19,4 +17,10 @@ class EducationInformation extends Model
         'profile_id',
         'user_id'
     ];
+
+    public function candidateProfile()
+{
+    return $this->belongsTo(CandidateProfile::class);
+}
+
 }

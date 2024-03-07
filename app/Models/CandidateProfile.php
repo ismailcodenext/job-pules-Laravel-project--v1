@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class CandidateProfile extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'full_name',
         'father_name',
@@ -25,7 +24,13 @@ class CandidateProfile extends Model
         'facebook_link',
         'github_link',
         'portfolio_link',
-        'portfolio_website'
+        'portfolio_website',
+        'user_id'
+        
     ];
-}
 
+    public function educationInformation()
+{
+    return $this->hasMany(EducationInformation::class);
+}
+}

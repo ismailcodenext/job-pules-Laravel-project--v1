@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Trainings extends Model
 {
     use HasFactory;
-        
     protected $fillable = [
         'trainingName',
         'institutionName',
@@ -16,4 +15,5 @@ class Trainings extends Model
         'profile_id',
         'user_id'
     ];
+
 }
