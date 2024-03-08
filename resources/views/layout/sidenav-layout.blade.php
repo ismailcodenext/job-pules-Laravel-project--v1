@@ -93,6 +93,30 @@
         <span class="side-bar-item-caption">Jobs</span>
     </a>
 
+    <li class="mt-3 mx-3" style="list-style-type: none !important">
+        <a href="#homeSection" style="list-style-type: none" data-bs-toggle="collapse">
+            <i style="font-size: 20px" class="bi-align-top"></i>
+            <span style="color:black;font-weight:700;font-size: 20px">Modify ALL Page</span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="homeSection">
+            <ul class="nav-second-level">
+                <li style="list-style-type: none !important">
+                    <a href="{{url("/Home-Page")}}" style="list-style-type: none" class="side-bar-item">
+                        <i class="bi-house-door-fill"></i>
+                                <span class="side-bar-item-caption">Home Page</span>
+                     </a>                                    
+                </li>
+                <li style="list-style-type: none !important">
+                    <a href="{{url("/Companie-Page")}}" style="list-style-type: none" class="side-bar-item">
+                        <i class="bi-building"></i>
+                                <span class="side-bar-item-caption">Companie Page</span>
+                     </a>                                    
+                </li>
+            </ul>
+        </div>
+    </li>
+
     <a href="#permission" data-bs-toggle="collapse" class="side-bar-item">
         <i class="bi-person-bounding-box"></i>
         <span class="side-bar-item-caption">Roles And Permission</span>

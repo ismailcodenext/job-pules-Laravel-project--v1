@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\EmployerController;
@@ -9,7 +11,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\EmployerJobController;
 use App\Http\Controllers\CandidateProfileController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\Home\TopCompanieController;
 
 
 
@@ -66,6 +68,28 @@ Route::view('permission-page','pages.dashboard.admin-dashboard.permission-page.p
 Route::view('role-page','pages.dashboard.admin-dashboard.role-page.role-page');
 Route::view('role-in-permission-page','pages.dashboard.admin-dashboard.role-in-permission-page.role-in-permission-page');
 
+
+
+// Home -> Hero Page Api Route
+Route::get("/list-home",[HomeController::class,'HomeList'])->middleware('auth:sanctum');
+Route::post("/create-home",[HomeController::class,'HomeCreate'])->middleware('auth:sanctum');
+Route::post("/home-by-id",[HomeController::class,'HomeById'])->middleware('auth:sanctum');
+Route::post("/update-home",[HomeController::class,'HomeUpdate'])->middleware('auth:sanctum');
+Route::post("/delete-home",[HomeController::class,'HomeDelete'])->middleware('auth:sanctum');
+
+
+// Home -> Companie Page Api Route
+Route::get("/list-companie",[TopCompanieController::class,'CompanieList'])->middleware('auth:sanctum');
+Route::post("/create-companie",[TopCompanieController::class,'CompanieCreate'])->middleware('auth:sanctum');
+Route::post("/companie-by-id",[TopCompanieController::class,'CompanieById'])->middleware('auth:sanctum');
+Route::post("/update-companie",[TopCompanieController::class,'CompanieUpdate'])->middleware('auth:sanctum');
+Route::post("/delete-companie",[TopCompanieController::class,'CompanieDelete'])->middleware('auth:sanctum');
+
+
+
+// Admin home page Route start
+Route::view('Home-Page','pages.dashboard.admin-dashboard.home-page.home');
+Route::view('Companie-Page','pages.dashboard.admin-dashboard.home-page.companie');
 
 //----------------Admin Dashboard Work End---------------------------//
 
