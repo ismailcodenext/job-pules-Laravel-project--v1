@@ -12,6 +12,7 @@ use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\EmployerJobController;
 use App\Http\Controllers\CandidateProfileController;
 use App\Http\Controllers\Home\TopCompanieController;
+use App\Http\Controllers\About\CompanieHistoryController;
 
 
 
@@ -86,10 +87,24 @@ Route::post("/update-companie",[TopCompanieController::class,'CompanieUpdate'])-
 Route::post("/delete-companie",[TopCompanieController::class,'CompanieDelete'])->middleware('auth:sanctum');
 
 
+// Home -> Companie Page Api Route
+Route::get("/list-companie-history",[CompanieHistoryController::class,'CompanieHistoryList'])->middleware('auth:sanctum');
+Route::post("/create-companie-history",[CompanieHistoryController::class,'CompanieHistoryCreate'])->middleware('auth:sanctum');
+Route::post("/companie-history-by-id",[CompanieHistoryController::class,'CompanieHistoryById'])->middleware('auth:sanctum');
+Route::post("/update-companie-history",[CompanieHistoryController::class,'CompanieHistoryUpdate'])->middleware('auth:sanctum');
+Route::post("/delete-companie-history",[CompanieHistoryController::class,'CompanieHistoryDelete'])->middleware('auth:sanctum');
 
-// Admin home page Route start
+
+
+// Admin Home page Route start
 Route::view('Home-Page','pages.dashboard.admin-dashboard.home-page.home');
 Route::view('Companie-Page','pages.dashboard.admin-dashboard.home-page.companie');
+
+
+
+// Admin About page Route start
+Route::view('Companie-History-Page','pages.dashboard.admin-dashboard.about-page.home');
+// Route::view('Companie-Page','pages.dashboard.admin-dashboard.about-page.companie');
 
 //----------------Admin Dashboard Work End---------------------------//
 
