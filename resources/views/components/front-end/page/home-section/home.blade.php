@@ -140,7 +140,7 @@ async function CompanieName() {
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="recent_job_content_btn">
-                                                    <a href="{{url('/about')}}">Apply</a>
+                                                    <a href="{{url('/list-job-company')}}">Apply</a>
                                                 </div>
                                             </div>
                                         </div>

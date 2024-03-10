@@ -43,7 +43,7 @@
             hideLoader()
             if(res.status===200 && res.data['status']==='success'){
                 setToken(res.data['token'])
-                window.location.href="/candidate-profile";
+                window.location.href="/candidate-dashboard";
             }
             else{
                 errorToast(res.data['message']);

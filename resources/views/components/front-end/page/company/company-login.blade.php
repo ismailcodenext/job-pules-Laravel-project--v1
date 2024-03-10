@@ -43,7 +43,7 @@
             hideLoader()
             if(res.status===200 && res.data['status']==='success'){
                 setToken(res.data['token'])
-                window.location.href="/employer-profile";
+                window.location.href="/employer-dashboard";
             }
             else{
                 errorToast(res.data['message']);

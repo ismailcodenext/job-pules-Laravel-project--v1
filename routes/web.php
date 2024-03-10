@@ -119,13 +119,6 @@ Route::view('Companie-History-Page','pages.dashboard.admin-dashboard.about-page.
 
 //----------------Employer Dashboard Work Start---------------------------//
 
-
-//employer front-page in dashboard
-Route::view('/employer-profile','pages.dashboard.employer-page.employer');
-
-//employer job create dashboard
-Route::view('/employer-job-list','pages.dashboard.employer-page.employer-job');
-
 //Employer Job CRUD Api Route
 Route::post("/create-job",[EmployerJobController::class,'jobCreate'])->middleware('auth:sanctum');
 Route::get("/list-job",[EmployerJobController::class,'jobList'])->middleware('auth:sanctum');
@@ -133,6 +126,13 @@ Route::post("/job-by-id",[EmployerJobController::class,'jobById'])->middleware('
 Route::post("/update-job",[EmployerJobController::class,'jobUpdate'])->middleware('auth:sanctum');
 Route::post("/delete-job",[EmployerJobController::class,'jobDelete'])->middleware('auth:sanctum');
 
+
+//employer front-page in dashboard
+Route::view('/employer-profile','pages.dashboard.employer-page.employer');
+//employer job create dashboard
+Route::view('/employer-job-list','pages.dashboard.employer-page.employer-job');
+// employer dashboard page
+Route::view('/employer-dashboard','pages.dashboard.employer-page.employer-dashboard');
 
 
 //----------------Employer Dashboard Work End---------------------------//
@@ -148,6 +148,7 @@ Route::post("/delete-profile",[CandidateProfileController::class,'ProfileDelete'
 
 
 //candidate dashboard
+Route::view('/candidate-dashboard','pages.dashboard.admin-dashboard.candidate-page.candidate-dashboard');
 Route::view('/candidate-profile','pages.dashboard.candidate-page.candidate');
 
 

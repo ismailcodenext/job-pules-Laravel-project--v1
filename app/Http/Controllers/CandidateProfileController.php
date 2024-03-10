@@ -24,6 +24,7 @@ class CandidateProfileController extends Controller
 }
 
 
+
 public function ProfileCreate(Request $request)
 {
     try {
