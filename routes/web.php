@@ -125,6 +125,7 @@ Route::get("/list-job",[EmployerJobController::class,'jobList'])->middleware('au
 Route::post("/job-by-id",[EmployerJobController::class,'jobById'])->middleware('auth:sanctum');
 Route::post("/update-job",[EmployerJobController::class,'jobUpdate'])->middleware('auth:sanctum');
 Route::post("/delete-job",[EmployerJobController::class,'jobDelete'])->middleware('auth:sanctum');
+Route::post("/jobdetails-Data",[EmployerJobController::class,'index'])->middleware('auth:sanctum');
 
 
 //employer front-page in dashboard
