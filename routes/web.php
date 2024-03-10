@@ -10,6 +10,7 @@ use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\EmployerJobController;
+use App\Http\Controllers\CompanyHeadingController;
 use App\Http\Controllers\CandidateProfileController;
 use App\Http\Controllers\Home\TopCompanieController;
 use App\Http\Controllers\About\CompanieHistoryController;
@@ -86,8 +87,14 @@ Route::post("/companie-by-id",[TopCompanieController::class,'CompanieById'])->mi
 Route::post("/update-companie",[TopCompanieController::class,'CompanieUpdate'])->middleware('auth:sanctum');
 Route::post("/delete-companie",[TopCompanieController::class,'CompanieDelete'])->middleware('auth:sanctum');
 
+Route::get("/list-heading-companie",[CompanyHeadingController::class,'CompanieHeadingList'])->middleware('auth:sanctum');
+Route::post("/create-heading-companie",[CompanyHeadingController::class,'CompanieHeadingCreate'])->middleware('auth:sanctum');
+Route::post("/companie-heading-by-id",[CompanyHeadingController::class,'CompanieHeadingById'])->middleware('auth:sanctum');
+Route::post("/update-heading-companie",[CompanyHeadingController::class,'CompanieHeadingUpdate'])->middleware('auth:sanctum');
+Route::post("/delete-heading-companie",[CompanyHeadingController::class,'CompanieHeadingDelete'])->middleware('auth:sanctum');
 
-// Home -> Companie Page Api Route
+
+// About -> Companie Page Api Route
 Route::get("/list-companie-history",[CompanieHistoryController::class,'CompanieHistoryList'])->middleware('auth:sanctum');
 Route::post("/create-companie-history",[CompanieHistoryController::class,'CompanieHistoryCreate'])->middleware('auth:sanctum');
 Route::post("/companie-history-by-id",[CompanieHistoryController::class,'CompanieHistoryById'])->middleware('auth:sanctum');
@@ -99,6 +106,7 @@ Route::post("/delete-companie-history",[CompanieHistoryController::class,'Compan
 // Admin Home page Route start
 Route::view('Home-Page','pages.dashboard.admin-dashboard.home-page.home');
 Route::view('Companie-Page','pages.dashboard.admin-dashboard.home-page.companie');
+Route::view('Companie-heading','pages.dashboard.admin-dashboard.home-page.heading');
 
 
 
@@ -188,8 +196,9 @@ Route::view('/employer-login','pages.front-end-page.company.login');
 Route::view('/candidate-login','pages.front-end-page.candidate.login');
 
 
-//Front-End Api Route Start
-
+//Front-End Home Page Data Api Route Start
+Route::get("/company-heading-Data",[CompanyHeadingController::class,'Heading']);
+Route::get("/top-company-data",[TopCompanieController::class,'index']);
 Route::get("/list-job-data",[JobController::class,'index']);
 
 

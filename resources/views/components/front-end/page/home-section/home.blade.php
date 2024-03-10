@@ -1,13 +1,16 @@
 <!-- Hero Start -->
 <section id="hero">
-    <div class="container">
-        <div class="hero_heading">
-            <img src="{{ asset('front-end/assets/image/companie_logo/compaine-logo-02.webp') }}" alt="">
-            <p>Job Pulse transforms job hunting and hiring by utilizing cutting-edge technology. Our platform
-                seamlessly connects skilled individuals with ideal opportunities while helping businesses efficiently
-                identify and recruit top talent.</p>
-        </div>
-    </div>
+            <img src="{{ asset('front-end/assets/image/banner/home_banner (2).png') }}" alt="">
+            <div class="hero_text">
+                <div class="hero_img">
+                <img src="{{asset('front-end/assets/image/companie_logo/Group_142.webp')}}" alt="">
+                </div>
+                <p>
+                    Job Pulse is a cutting-edge job service company dedicated to
+                    revolutionizing the way individuals find employment and businesses
+                    hire talent.
+                  </p>
+            </div>
 </section>
 <!-- Hero End -->
 
@@ -15,35 +18,11 @@
 <section id="companie">
     <div class="container">
         <div class="compainie_heading">
-            <h1>Top Companies</h1>
+            <h1 id="CompanieHeading"></h1>
         </div>
         <div class="compaine_content">
-            <div class="compaine_cards">
-                <div class="compaine_card">
-                    <a href="#"><img
-                            src="{{ asset('front-end/assets/image/companie_logo/compaine_logo_01.png') }}"
-                            alt=""></a>
-                </div>
-                <div class="compaine_card">
-                    <a href="#"><img
-                            src="{{ asset('front-end/assets/image/companie_logo/compaine_logo_02.png') }}"
-                            alt=""></a>
-                </div>
-                <div class="compaine_card">
-                    <a href="#"><img
-                            src="{{ asset('front-end/assets/image/companie_logo/compaine_logo_03.png') }}"
-                            alt=""></a>
-                </div>
-                <div class="compaine_card">
-                    <a href="#"><img
-                            src="{{ asset('front-end/assets/image/companie_logo/compaine_logo_04.png') }}"
-                            alt=""></a>
-                </div>
-                <div class="compaine_card">
-                    <a href="#"><img
-                            src="{{ asset('front-end/assets/image/companie_logo/compaine_logo_05.png') }}"
-                            alt=""></a>
-                </div>
+            <div class="compaine_cards" id="CompanyImg">
+
             </div>
         </div>
     </div>
@@ -81,6 +60,43 @@
 <!-- Recent Job End -->
 
 <script>
+CompanieHeadings();
+CompanieName();
+
+
+async function CompanieHeadings() {
+            try {
+                let res = await axios.get("/company-heading-Data");
+                const data = res.data.data;
+                document.getElementById('CompanieHeading').innerHTML = data.heading;
+            } catch (error) {
+                console.error("Error fetching Companie Heading data:", error);
+            }
+        }
+
+
+async function CompanieName() {
+    try {
+        let res = await axios.get("/top-company-data");
+        $("#CompanyImg").empty();
+
+        if (res.data['Companie_data'].length === 0) {
+            // Handle case where no data is returned
+            console.warn("No Companie data found");
+            return;
+        }
+        res.data['Companie_data'].forEach((item, i) => {
+            let EachItem = `<div class="compaine_card">
+                    <a href="#"><img src="${item['img_url']}" alt=""></a>
+                </div>`;
+            $("#CompanyImg").append(EachItem);
+        });
+    } catch (error) {
+        console.error("Error fetching Companie data:", error);
+    }
+}    
+
+
     Joblist();
 
     async function Joblist() {

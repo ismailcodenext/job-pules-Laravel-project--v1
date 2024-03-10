@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TopCompanie extends Model
+class CompanyHeading extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'img_url',
+        'heading',
         'user_id'
     ];
 }
-

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('top_companies', function (Blueprint $table) {
+        Schema::create('company_headings', function (Blueprint $table) {
             $table->id();
-            $table->string('img_url');
+            $table->string('heading');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamp('created_at')->useCurrent();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('top_companies');
+        Schema::dropIfExists('company_headings');
     }
 };

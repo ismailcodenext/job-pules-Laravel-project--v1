@@ -78,6 +78,7 @@
         <span class="side-bar-item-caption">Dashboard</span>
     </a>
 
+
     <a href="{{url("/Employer-Page")}}" class="side-bar-item">
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">Companies</span>
@@ -106,6 +107,13 @@
                         <i class="bi-house-door-fill"></i>
                                 <span class="side-bar-item-caption">Home Page</span>
                      </a>                                    
+                </li>
+                <li style="list-style-type: none !important">
+                
+    <a href="{{url("/Companie-heading")}}" class="side-bar-item">
+        <i class="bi bi-graph-up"></i>
+        <span class="side-bar-item-caption">Companies Heading</span>
+    </a>                                    
                 </li>
                 <li style="list-style-type: none !important">
                     <a href="{{url("/Companie-Page")}}" style="list-style-type: none" class="side-bar-item">

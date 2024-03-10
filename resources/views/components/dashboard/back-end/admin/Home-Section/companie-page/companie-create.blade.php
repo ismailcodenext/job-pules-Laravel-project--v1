@@ -2,15 +2,13 @@
     <div class="modal-dialog modal-dialog-centered modal-md">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="modal-title" id="exampleModalLabel">Companie Page</h6>
+                <h6 class="modal-title" id="exampleModalLabel">Company Image Create</h6>
             </div>
             <div class="modal-body">
                 <form id="save-form">
                     <div class="container">
                         <div class="row">
                             <div class="col-12 p-1">
-                                <label class="form-label">Heading *</label>
-                                <input type="text" class="form-control" id="CompanieHeading">
                                 <br/>
                                 <img class="w-15" id="newImg" src="{{asset('images/default.jpg')}}"/>
                                 <br/>
@@ -32,23 +30,18 @@
 </div>
 <script>
     async function Save() {
-    try {
-        let CompanieHeading = document.getElementById('CompanieHeading').value;
-        let imgInput = document.getElementById('ComapnieImage');
+        try {
+            let imgInput = document.getElementById('ComapnieImage');
 
-        if (!imgInput.files || imgInput.files.length === 0) {
-            errorToast("Companie Photo Required !");
-            return;
-        }
+            if (!imgInput.files || imgInput.files.length === 0) {
+                errorToast("Companie Photo Required !");
+                return;
+            }
 
-        let imgFile = imgInput.files[0];
+            let imgFile = imgInput.files[0];
 
-        if (CompanieHeading.trim() === "") {
-            errorToast("Companie Required !");
-        } else {
             document.getElementById('modal-close').click();
             let formData = new FormData();
-            formData.append('heading', CompanieHeading);
             formData.append('img', imgFile);
 
             const config = {
@@ -69,14 +62,12 @@
             } else {
                 errorToast(res.data['message'])
             }
+        } catch (e) {
+            unauthorized(e.response.status)
         }
-
-    } catch (e) {
-        unauthorized(e.response.status)
     }
-}
-
 </script>
+
 
 {{-- <script>
     async function Save() {

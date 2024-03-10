@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Http\Controllers\Controller;
-use App\Models\TopCompanie;
 use Exception;
+use App\Models\TopCompanie;
+use Illuminate\Http\Request;
+use App\Helper\ResponseHelper;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Http\Request;
 
 class TopCompanieController extends Controller
 {
-    
-    // public function index(){
-    //     try {
-    //         $Laboheme_data = TopCompanie::latest()->get();
-    //         return response()->json(['status' => 'success', 'Laboheme_data' => $Laboheme_data]);
-    //     } catch (Exception $e) {
-    //         return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
-    //     }
-    // }
+
+    public function index(){
+        try {
+            $Companie_data = TopCompanie::latest()->get();
+            return response()->json(['status' => 'success', 'Companie_data' => $Companie_data]);
+        } catch (Exception $e) {
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+        }
+    }
 
 
     function CompanieList()
@@ -46,11 +47,10 @@ class TopCompanieController extends Controller
             $img->move(public_path('uploads/companie-img'), $img_name);
 
             TopCompanie::create([
-                'heading' => $request->input('heading'),
                 'img_url' => $img_url,
                 'user_id' => $user_id
             ]);
-            return response()->json(['status' => 'success', 'message' => 'Top Companie content and images Create Create Successful']);
+            return response()->json(['status' => 'success', 'message' => ' Companie images Create Create Successful']);
         } catch (Exception $e) {
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
@@ -76,11 +76,10 @@ class TopCompanieController extends Controller
             $user_id = Auth::id();
             $CompanieUpdate = TopCompanie::find($request->input('id'));
             if (!$CompanieUpdate || $CompanieUpdate->user_id != $user_id) {
-                return response()->json(['status' => 'fail', 'message' => 'Companie Page not found or unauthorized access.']);
+                return response()->json(['status' => 'fail', 'message' => 'Companie image not found or unauthorized access.']);
             }
             // Update the cast information
             $CompanieUpdate->img_url = $request->input('img_url');
-            $CompanieUpdate->heading = $request->input('heading');
             if ($request->hasFile('img')) {
                 $img = $request->file('img');
                 $t = time();
@@ -95,7 +94,7 @@ class TopCompanieController extends Controller
                 $CompanieUpdate->img_url = $img_url;
             }
             $CompanieUpdate->save();
-            return response()->json(['status' => 'success', 'message' => 'Top Companie content and images Page Update Successful']);
+            return response()->json(['status' => 'success', 'message' => ' Companie images Update Successful']);
         } catch (Exception $e) {
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
@@ -122,7 +121,7 @@ class TopCompanieController extends Controller
 
             TopCompanie::where('id', $cast_id)->delete();
 
-            return response()->json(['status' => 'success', 'message' => 'Top Companie content and images Delete Successful']);
+            return response()->json(['status' => 'success', 'message' => ' Companie images Delete Successful']);
         } catch (Exception $e) {
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
