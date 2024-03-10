@@ -3,7 +3,7 @@
             <img src="{{ asset('front-end/assets/image/banner/home_banner (2).png') }}" alt="">
             <div class="hero_text">
                 <div class="hero_img">
-                <img src="{{asset('front-end/assets/image/companie_logo/Group_142.webp')}}" alt="">
+                {{-- <img src="{{asset('front-end/assets/image/nav-logo/Job_Pulse_Logo.webp')}}" alt=""> --}}
                 </div>
                 <p>
                     Job Pulse is a cutting-edge job service company dedicated to
@@ -140,7 +140,7 @@ async function CompanieName() {
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="recent_job_content_btn">
-                                                    <a href="#">Apply</a>
+                                                    <a href="{{url('/about')}}">Apply</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -96,15 +96,15 @@
   left: 5%;
 }
 
- .hero_img {
-  width: 100px;
-  height: 100px;
+ .hero_img img{
+  width: 350px !important;
+ background-size: cover;
 }
 
-.hero_img img{
+/* .hero_img img{
   width: 100%;
   height: 100%;
-}
+} */
 
 
 
