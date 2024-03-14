@@ -56,23 +56,16 @@ class JobController extends Controller
     {
         try {
             $request->validate(["id" => 'required|string']);
-    
-            // Check if the user is authenticated
-            if (!$request->user()) {
-                return response()->json(['status' => 'unauthenticated', 'message' => 'User is not authenticated.']);
-            }
-    
             $rows = Job::where('id', $request->id)->first();
             if ($rows) {
                 return response()->json(['status' => 'success', 'rows' => $rows]);
             } else {
-                return response()->json(['status' => 'fail', 'message' => 'Job not found.']);
+                return response()->json(['status' => 'fail', 'message' => 'User not found.']);
             }
         } catch (Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
     }
-    
 
     public function jobCompanyUpdate(Request $request)
     {

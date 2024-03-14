@@ -118,7 +118,6 @@ CompanieHeadings();
 CompanieName();
 
 
-
 async function CompanieHeadings() {
             try {
                 let res = await axios.get("/company-heading-Data");
@@ -129,8 +128,8 @@ async function CompanieHeadings() {
             }
         }
 
-        async function FillUpUpdteForm(id) {
-    try {a
+async function FillUpUpdateForm(id) {
+    try {
         // Fetch job details
         const response = await axios.post("/job-by-id", { id: id.toString() }, HeaderToken());
 
@@ -160,6 +159,35 @@ async function CompanieHeadings() {
     }
 }
 
+
+
+
+// async function FillUpUpdateForm(id) {
+//     try {
+//         document.getElementById('updateID').value = id;
+//         showLoader();
+
+//         // Fetch job details
+//         const response = await axios.post("/job-by-id", { id: id.toString() }, HeaderToken());
+//         hideLoader();
+
+//         const data = response.data.rows;
+
+//         // Populate form inputs with job details
+//         document.getElementById('jobTitleUpdate').innerText = data.job_title;
+//         document.getElementById('jobDescriptionUpdate').innerText = data.job_description;
+//         document.getElementById('benefitsUpdate').innerText = data.benefits;
+//         document.getElementById('locationUpdate').innerText = data.location;
+//         document.getElementById('deadlineUpdate').innerText = data.deadline;
+//         document.getElementById('jobTypeUpdate').innerText = data.job_type;
+//         document.getElementById('jobSkillUpdate').textContent = data.job_skills.split(', ').join(' ');
+//         document.getElementById('salaryUpdate').innerText = data.salary;
+//         document.getElementById('jobCategoryUpdate').innerText = data.job_category;
+
+//     } catch (e) {
+//         unauthorized(e.response.status);
+//     }
+// }
 
 
 async function CompanieName() {
