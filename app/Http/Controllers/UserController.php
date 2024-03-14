@@ -11,6 +11,16 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 
 class UserController extends Controller
 {
+
+
+    public function profileview()
+    {
+        return view('components.front-end.components.navbar'); // Replace 'your-view' with the name of your Blade view file
+    }
+
+
+
+
 //    function UserRegistration(Request $request){
 //        try {
 //            $request->validate([
@@ -32,6 +42,7 @@ class UserController extends Controller
 //            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
 //        }
 //}
+
 
     public function UserRegistration(Request $request)
     {
@@ -219,9 +230,66 @@ public function CandidateLogin(Request $request)
         return redirect('/userLogin');
     }
 
-    function UserProfile(Request $request){
+    function UsersLogout(Request $request){
+        $request->user()->tokens()->delete();
+    }
+
+    public function getUserInformation(Request $request)
+    {
+        // Get the first name from the request
+        $firstName = $request->input('firstName');
+    
+        // Retrieve the user by first name
+        $user = User::where('firstName', $firstName)->first();
+    
+        if ($user) {
+            return response()->json(['status' => 'success', 'user' => $user]);
+        } else {
+            return response()->json(['status' => 'fail', 'message' => 'User not found']);
+        }
+    }
+ 
+    public function UserProfile(Request $request)
+    {
         return Auth::user();
     }
+
+    // public function getUserInformation(Request $request)
+    // {
+    //     // Assuming you have the email address in the request
+    //     $email = $request->input('email');
+
+    //     // Retrieve the user by email
+    //     $user = User::where('email', $email)->first();
+
+    //     if ($user) {
+    //         return response()->json(['status' => 'success', 'firstName' => $user->firstName]);
+    //     } else {
+    //         return response()->json(['status' => 'fail', 'message' => 'User not found']);
+    //     }
+    // }
+    
+    // function UserInformation(Request $request){
+
+    //     try{
+    //         $request->validate([
+    //             'firstName' => 'required|string|max:50',
+    //             'lastName' => 'required|string|max:50',
+    //             'mobile' => 'required|string|max:50',
+    //         ]);
+
+    //         User::where('id','=',Auth::id())->update([
+    //             'firstName'=>$request->input('firstName'),
+    //             'lastName'=>$request->input('lastName'),
+    //             'mobile'=>$request->input('mobile'),
+    //         ]);
+
+    //         return response()->json(['status' => 'success', 'message' => 'Request Successful']);
+
+    //     }catch (Exception $e){
+    //         return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+    //     }
+    // }
 
     function UpdateProfile(Request $request){
 
@@ -244,5 +312,7 @@ public function CandidateLogin(Request $request)
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
     }
+
+
 
 }

@@ -162,8 +162,10 @@ Route::view('/candidate-profile','pages.dashboard.candidate-page.candidate');
 Route::post('/user-registration',[UserController::class,'UserRegistration']);
 Route::post('/user-login',[UserController::class,'UserLogin']);
 Route::get('/user-profile',[UserController::class,'UserProfile'])->middleware('auth:sanctum');
+Route::get('/user-information', [UserController::class, 'getUserInformation']);
 // Route::get('/user-profile',[UserController::class,'UserProfile'])->middleware('auth:sanctum');
 Route::get('/logout',[UserController::class,'UserLogout'])->middleware('auth:sanctum');
+Route::get('/user-logout',[UserController::class,'UsersLogout']);
 Route::post('/user-update',[UserController::class,'UpdateProfile'])->middleware('auth:sanctum');
 Route::post('/send-otp',[UserController::class,'SendOTPCode']);
 Route::post('/verify-otp',[UserController::class,'VerifyOTP']);
@@ -202,5 +204,10 @@ Route::view('/candidate-login','pages.front-end-page.candidate.login');
 Route::get("/company-heading-Data",[CompanyHeadingController::class,'Heading']);
 Route::get("/top-company-data",[TopCompanieController::class,'index']);
 Route::get("/list-job-data",[JobController::class,'index']);
+
+// check authentication for user
+// Route for checking authentication status
+Route::get("/check-authentication", [UserController::class, 'checkAuthentication']);
+
 
 

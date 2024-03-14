@@ -55,7 +55,7 @@
                 <div class="user-dropdown-content ">
                     <div class="mt-4 text-center">
                         <img class="icon-nav-img" src="{{asset('images/user.webp')}}" alt=""/>
-                        <h6>User Name</h6>
+                        <h6 id="Name"></h6>
                         <hr class="user-dropdown-divider  p-0"/>
                     </div>
                     <a href="{{url('/userProfile')}}" class="side-bar-item">
@@ -193,6 +193,20 @@
             content.classList.add("content");
         }
     }
+
+    getProfile();
+
+async function getProfile() {
+    try {
+        showLoader();
+        let res = await axios.get("/user-profile", HeaderToken());
+        hideLoader();
+        document.getElementById('Name').innerText = res.data['firstName'];
+
+    } catch (e) {
+        unauthorized(e.response.status)
+    }
+}
 
     async function logout() {
 

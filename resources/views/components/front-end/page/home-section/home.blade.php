@@ -118,6 +118,7 @@ CompanieHeadings();
 CompanieName();
 
 
+
 async function CompanieHeadings() {
             try {
                 let res = await axios.get("/company-heading-Data");
@@ -128,15 +129,17 @@ async function CompanieHeadings() {
             }
         }
 
-
-async function FillUpUpdateForm(id) {
-    try {
-        document.getElementById('updateID').value = id;
-        showLoader();
-
+        async function FillUpUpdteForm(id) {
+    try {a
         // Fetch job details
         const response = await axios.post("/job-by-id", { id: id.toString() }, HeaderToken());
-        hideLoader();
+
+        // Check if the user is authenticated
+        if (response.data.status === 'unauthenticated') {
+            // Redirect to the login page
+            window.location.href = '/login';
+            return;
+        }
 
         const data = response.data.rows;
 
@@ -150,11 +153,13 @@ async function FillUpUpdateForm(id) {
         document.getElementById('jobSkillUpdate').textContent = data.job_skills.split(', ').join(' ');
         document.getElementById('salaryUpdate').innerText = data.salary;
         document.getElementById('jobCategoryUpdate').innerText = data.job_category;
-
-    } catch (e) {
-        unauthorized(e.response.status);
+        
+    } catch (error) {
+        // Handle unauthorized access or errors
+        unauthorized(error.response.status);
     }
 }
+
 
 
 async function CompanieName() {
