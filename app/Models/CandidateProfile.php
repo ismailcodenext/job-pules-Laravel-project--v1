@@ -26,11 +26,13 @@ class CandidateProfile extends Model
         'portfolio_link',
         'portfolio_website',
         'user_id'
-        
+
     ];
 
     public function educationInformation()
 {
     return $this->hasMany(EducationInformation::class);
 }
+
+
 }

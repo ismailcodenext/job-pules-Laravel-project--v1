@@ -106,7 +106,7 @@
                     <a href="{{url("/Home-Page")}}" style="list-style-type: none" class="side-bar-item">
                         <i class="bi-house-door-fill"></i>
                                 <span class="side-bar-item-caption">Home Page</span>
-                     </a>                                    
+                     </a>
                 </li>
                 <li style="list-style-type: none !important">
                 
@@ -119,13 +119,13 @@
                     <a href="{{url("/Companie-Page")}}" style="list-style-type: none" class="side-bar-item">
                         <i class="bi-building"></i>
                                 <span class="side-bar-item-caption">Home Companie Page</span>
-                     </a>                                    
+                     </a>
                 </li>
                 <li style="list-style-type: none !important">
                     <a href="{{url("/Companie-History-Page")}}" style="list-style-type: none" class="side-bar-item">
                         <i class="bi-building"></i>
                                 <span class="side-bar-item-caption">About Companie History Page</span>
-                     </a>                                    
+                     </a>
                 </li>
             </ul>
         </div>
@@ -146,10 +146,12 @@
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">All Role</span>
         <span class="menu-arrow"></span>
+    </a><br>
+    <a href="{{url("/role-in-permission-page")}}" class="collapse" id="permission">
+        <i class="bi bi-graph-up"></i>
+        <span class="side-bar-item-caption">Role In Permission</span>
+        <span class="menu-arrow"></span>
     </a>
-
-
-
 
 </div>
 

@@ -26,14 +26,29 @@
                         <a class="nav-link" href="{{ url('contact') }}">Contact</a>
                     </li>
                 </ul>
-          
+
                 <div class="navbar_btn">
                     <a href="#" class="signup-button" onclick="LoginModal()">Login</a>
                     <a href="#" class="signup-button" onclick="SingModal()">Sign Up</a>
                 </div>
-                
 
-                <div class="float-right mx-5 h-auto d-flex">
+
+{{--                    <div class="float-right mx-5 h-auto d-flex">--}}
+{{--                        <div class="user-dropdown">--}}
+{{--                            <img class="icon-nav-img" src="{{ asset('images/user.webp') }}" alt=""/>--}}
+{{--                            <div class="user-dropdown-content">--}}
+{{--                                <div class="mt-4 text-center">--}}
+{{--                                    <img class="icon-nav-img" src="{{ asset('images/user.webp') }}" alt=""/>--}}
+{{--                                    <h6 id="UserName"></h6>--}}
+{{--                                    <hr class="user-dropdown-divider p-0"/>--}}
+{{--                                </div>--}}
+{{--                                <button onclick="logout()" class="side-bar-item">--}}
+{{--                                    <span class="side-bar-item-caption">Logout</span>--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+                <div id="userDropdownContainer" class="float-right mx-5 h-auto d-flex" style="display: none;">
                     <div class="user-dropdown">
                         <img class="icon-nav-img" src="{{ asset('images/user.webp') }}" alt=""/>
                         <div class="user-dropdown-content">
@@ -49,8 +64,6 @@
                     </div>
                 </div>
 
-
-            
             </div>
         </div>
     </nav>
@@ -93,13 +106,39 @@
 
 <script>
     // Function to fetch user profile and display name
+    // async function getProfile() {
+    //     try {
+    //         let res = await axios.get("/user-profile", HeaderToken());
+    //         document.getElementById('UserName').innerText = res.data['firstName'];
+    //     } catch (e) {
+    //         unauthorized(e.response.status)
+    //     }
+    // }
+
+
+
     async function getProfile() {
-        try {
-            let res = await axios.get("/user-profile", HeaderToken());
-            document.getElementById('UserName').innerText = res.data['firstName'];
-        } catch (e) {
-            unauthorized(e.response.status)
+        // Check if the user is logged in (you need to implement this logic)
+        if (isLoggedIn()) {
+            try {
+                let res = await axios.get("/user-profile", HeaderToken());
+                document.getElementById('UserName').innerText = res.data['firstName'];
+            } catch (e) {
+                unauthorized(e.response.status);
+            }
+        } else {
+            console.log("User is not logged in. Profile cannot be fetched.");
+            // Optionally, you can handle this case further if needed
         }
+    }
+
+    function isLoggedIn() {
+        // Check if a token is present in localStorage or sessionStorage
+        const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+
+        // Return true if a token is present, indicating the user is logged in
+        // Otherwise, return false
+        return token !== null;
     }
 
     // Call getProfile function when the page is loaded

@@ -84,13 +84,14 @@
                                                             </div>
                                                             <div class="col-sm-6">
                                                                 <div class="text_heading_text_btn">
-                                                                    <a href="#">Apply</a>
+                                                                    <button onclick="Save()" id="save-btn" class="btn bg-gradient-success" >Apply</button>
                                                                 </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </section>    
+                                            </section>
                                             <input class="d-none" id="updateID">
                                         </div>
                                     </div>
@@ -100,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
 
         </div>
@@ -152,42 +153,13 @@ async function FillUpUpdateForm(id) {
         document.getElementById('jobSkillUpdate').textContent = data.job_skills.split(', ').join(' ');
         document.getElementById('salaryUpdate').innerText = data.salary;
         document.getElementById('jobCategoryUpdate').innerText = data.job_category;
-        
+
     } catch (error) {
         // Handle unauthorized access or errors
         unauthorized(error.response.status);
     }
 }
 
-
-
-
-// async function FillUpUpdateForm(id) {
-//     try {
-//         document.getElementById('updateID').value = id;
-//         showLoader();
-
-//         // Fetch job details
-//         const response = await axios.post("/job-by-id", { id: id.toString() }, HeaderToken());
-//         hideLoader();
-
-//         const data = response.data.rows;
-
-//         // Populate form inputs with job details
-//         document.getElementById('jobTitleUpdate').innerText = data.job_title;
-//         document.getElementById('jobDescriptionUpdate').innerText = data.job_description;
-//         document.getElementById('benefitsUpdate').innerText = data.benefits;
-//         document.getElementById('locationUpdate').innerText = data.location;
-//         document.getElementById('deadlineUpdate').innerText = data.deadline;
-//         document.getElementById('jobTypeUpdate').innerText = data.job_type;
-//         document.getElementById('jobSkillUpdate').textContent = data.job_skills.split(', ').join(' ');
-//         document.getElementById('salaryUpdate').innerText = data.salary;
-//         document.getElementById('jobCategoryUpdate').innerText = data.job_category;
-
-//     } catch (e) {
-//         unauthorized(e.response.status);
-//     }
-// }
 
 
 async function CompanieName() {
@@ -209,7 +181,7 @@ async function CompanieName() {
     } catch (error) {
         console.error("Error fetching Companie data:", error);
     }
-}    
+}
 
 
 Joblist();
@@ -285,6 +257,36 @@ function setupEditButtons() {
         await FillUpUpdateForm(id);
         $("#update-modal").modal('show');
     });
+}
+
+async function Save(job_id, candidate_id, user_id) {
+    try {
+        // You can add any necessary validation here
+
+        // Prepare data to send to the API
+        const data = {
+            job_id: job_id,
+            candidate_id: candidate_id,
+            user_id: user_id
+        };
+
+        // Make a POST request to the API route
+        const response = await axios.post("/create-job-applies", data);
+
+        // Check the response status
+        if (response.status === 200) {
+            // Handle success
+            console.log("Job application successful");
+            // You can add any further logic here, such as showing a success message
+        } else {
+            // Handle errors
+            console.error("Error applying for job");
+            // You can add any further error handling logic here, such as showing an error message
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle any unexpected errors here
+    }
 }
 
 </script>

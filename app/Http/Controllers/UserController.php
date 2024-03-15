@@ -12,38 +12,6 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 class UserController extends Controller
 {
 
-
-    public function profileview()
-    {
-        return view('components.front-end.components.navbar'); // Replace 'your-view' with the name of your Blade view file
-    }
-
-
-
-
-//    function UserRegistration(Request $request){
-//        try {
-//            $request->validate([
-//                'firstName' => 'required|string|max:50',
-//                'lastName' => 'required|string|max:50',
-//                'email' => 'required|string|email|max:50|unique:users,email',
-//                'mobile' => 'required|string|max:50',
-//                'password' => 'required|string|min:3'
-//            ]);
-//            User::create([
-//                'firstName' => $request->input('firstName'),
-//                'lastName' => $request->input('lastName'),
-//                'email' => $request->input('email'),
-//                'mobile' => $request->input('mobile'),
-//                'password' => Hash::make($request->input('password'))
-//            ]);
-//            return response()->json(['status' => 'success', 'message' => 'User Registration Successfully']);
-//        } catch (Exception $e) {
-//            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
-//        }
-//}
-
-
     public function UserRegistration(Request $request)
     {
         try {
@@ -238,58 +206,29 @@ public function CandidateLogin(Request $request)
     {
         // Get the first name from the request
         $firstName = $request->input('firstName');
-    
+
         // Retrieve the user by first name
         $user = User::where('firstName', $firstName)->first();
-    
+
         if ($user) {
             return response()->json(['status' => 'success', 'user' => $user]);
         } else {
             return response()->json(['status' => 'fail', 'message' => 'User not found']);
         }
     }
- 
+
     public function UserProfile(Request $request)
     {
-        return Auth::user();
+        if (Auth::check()) {
+            return Auth::user();
+        } else {
+            return response()->json(['status' => 'fail', 'message' => 'Unauthorized'], 401);
+        }
+    }
     }
 
-    // public function getUserInformation(Request $request)
-    // {
-    //     // Assuming you have the email address in the request
-    //     $email = $request->input('email');
 
-    //     // Retrieve the user by email
-    //     $user = User::where('email', $email)->first();
 
-    //     if ($user) {
-    //         return response()->json(['status' => 'success', 'firstName' => $user->firstName]);
-    //     } else {
-    //         return response()->json(['status' => 'fail', 'message' => 'User not found']);
-    //     }
-    // }
-    
-    // function UserInformation(Request $request){
-
-    //     try{
-    //         $request->validate([
-    //             'firstName' => 'required|string|max:50',
-    //             'lastName' => 'required|string|max:50',
-    //             'mobile' => 'required|string|max:50',
-    //         ]);
-
-    //         User::where('id','=',Auth::id())->update([
-    //             'firstName'=>$request->input('firstName'),
-    //             'lastName'=>$request->input('lastName'),
-    //             'mobile'=>$request->input('mobile'),
-    //         ]);
-
-    //         return response()->json(['status' => 'success', 'message' => 'Request Successful']);
-
-    //     }catch (Exception $e){
-    //         return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
-    //     }
-    // }
 
     function UpdateProfile(Request $request){
 
@@ -311,7 +250,6 @@ public function CandidateLogin(Request $request)
         }catch (Exception $e){
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
-    }
 
 
 

@@ -83,73 +83,7 @@
                                 <label class="form-label">Portfolio Website:</label>
                                 <input type="text" class="form-control" id="PortfolioLink">
                             </div>
-                            <h4 class="card-title">Educational information</h4>
-                            @for ($i = 0; $i < 3; $i++)
-                                <div class="row py-3">
-                                    <div class="col-lg-3">
-                                        <div>
-                                            <div class="mb-3">
-                                                <label for="degreeType" class="form-label">Degree type
-                                                    {{ $i + 1 }}</label>
-                                                <select class="form-select" id="degreeType_{{ $i }}">
-                                                    <option value="SSC">SSC</option>
-                                                    <option value="HSC">HSC</option>
-                                                    <option value="University">University</option>
 
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div>
-                                            <div class="mb-3">
-                                                <label for="school" class="form-label">School/University
-                                                    Name</label>
-                                                <input class="form-control" type="text"
-                                                    placeholder="EX: North South University"
-                                                    id="school_{{ $i }}">
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div>
-                                            <div class="mb-3">
-                                                <label for="major" class="form-label">Group/Major</label>
-                                                <input class="form-control" type="text"
-                                                    placeholder="EX: Computer Science" id="major_{{ $i }}">
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div>
-                                            <div class="mb-3">
-                                                <label for="passYear" class="form-label">Passing Year</label>
-                                                <input class="form-control" type="text" placeholder="EX: 2022"
-                                                    id="passYear_{{ $i }}">
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div>
-                                            <div class="mb-3">
-                                                <label for="gpa" class="form-label">GPA/CGPA</label>
-                                                <input class="form-control" type="text" placeholder="EX: 5.00"
-                                                    id="gpa_{{ $i }}">
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            @endfor
                         </div>
                     </div>
                 </form>
@@ -162,8 +96,11 @@
         </div>
     </div>
 </div>
-<script>new MultiSelectTag('tags') </script>
+
+
 <script>
+
+
     async function Save() {
         try {
             // Extracting personal information
@@ -204,31 +141,16 @@
             formData.append('portfolio_website', PortfolioLink);
 
 
-            const educationInfo = [];
-
-            for (let i = 0; i < 3; i++) {
-                const degreeType = document.getElementById(`degreeType_${i}`).value;
-                const schoolName = document.getElementById(`school_${i}`).value;
-                const major = document.getElementById(`major_${i}`).value;
-                const passingYear = document.getElementById(`passYear_${i}`).value;
-                const gpa = document.getElementById(`gpa_${i}`).value;
-
-                educationInfo.push({
-                    degreeType: degreeType,
-                    schoolName: schoolName,
-                    major: major,
-                    passYear: passingYear,
-                    gpa: gpa,
-                });
-            }
+            // Modify your HeaderToken() function to return necessary headers
+            const headers = HeaderToken().headers || {};
 
             // Setting up the configuration with headers
             const config = {
                 headers: {
                     'content-type': 'multipart/form-data',
-                    ...HeaderToken().headers
+                    ...headers
                 }
-            }
+            };
 
             // Making the request
             showLoader();
@@ -255,7 +177,8 @@
 
 
 
-{{-- 
+
+{{--
 <script>
     async function Save() {
         try {

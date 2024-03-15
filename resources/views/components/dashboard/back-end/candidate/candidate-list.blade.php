@@ -15,8 +15,8 @@
                     <thead>
                     <tr class="bg-light">
                         <th>No</th>
-                        <th>Job Title</th>
-                        <th>Status</th>
+                        <th>First Name</th>
+                        <th>Father Name</th>
                         <th>Publish Date</th>
                         <th>Action</th>
                     </tr>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobApplyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\CompanyHeadingController;
 use App\Http\Controllers\CandidateProfileController;
 use App\Http\Controllers\Home\TopCompanieController;
 use App\Http\Controllers\About\CompanieHistoryController;
+
 
 
 
@@ -48,6 +50,9 @@ Route::post("/job-company-by-id",[JobController::class,'jobCompanyById'])->middl
 Route::post("/update-job-company",[JobController::class,'jobCompanyUpdate'])->middleware('auth:sanctum');
 Route::post("/delete-job",[JobController::class,'jobDelete'])->middleware('auth:sanctum');
 
+// Job Apply Api Route
+Route::post("/create-job-applies",[JobApplyController::class,'jobAppliesCreate'])->middleware('auth:sanctum');
+
 // Permission Page Api Route
 Route::get("/list-permission",[RoleController::class,'permissionRoleList'])->middleware('auth:sanctum');
 Route::post("/create-permission",[RoleController::class,'permissionCreate'])->middleware('auth:sanctum');
@@ -62,13 +67,17 @@ Route::post("/delete-role",[RoleController::class,'roleDelete'])->middleware('au
 Route::post("/role-by-id",[RoleController::class,'roleById'])->middleware('auth:sanctum');
 Route::post("/update-role",[RoleController::class,'roleUpdate'])->middleware('auth:sanctum');
 
+// Role In Permission Page Api Route
+Route::get("/list-role-in-permission",[RoleController::class,'roleInPermissionList']);
+Route::post("/create-role-in-permission",[RoleController::class,'roleInPermissionCreate'])->middleware('auth:sanctum');
+
 //Admin Back-end Route
 Route::view('Employer-Page','pages.dashboard.admin-dashboard.companies-page');
 Route::view('candidate-Page','pages.dashboard.admin-dashboard.candidate-page.candidate');
 Route::view('/job-list-page','pages.dashboard.admin-dashboard.job-page');
 Route::view('permission-page','pages.dashboard.admin-dashboard.permission-page.permission-page');
 Route::view('role-page','pages.dashboard.admin-dashboard.role-page.role-page');
-Route::view('role-in-permission-page','pages.dashboard.admin-dashboard.role-in-permission-page.role-in-permission-page');
+Route::view('role-in-permission-page','pages.dashboard.admin-dashboard.role-in-permission.role-in-permission-page');
 
 
 
@@ -163,7 +172,6 @@ Route::post('/user-registration',[UserController::class,'UserRegistration']);
 Route::post('/user-login',[UserController::class,'UserLogin']);
 Route::get('/user-profile',[UserController::class,'UserProfile'])->middleware('auth:sanctum');
 Route::get('/user-information', [UserController::class, 'getUserInformation']);
-// Route::get('/user-profile',[UserController::class,'UserProfile'])->middleware('auth:sanctum');
 Route::get('/logout',[UserController::class,'UserLogout'])->middleware('auth:sanctum');
 Route::get('/user-logout',[UserController::class,'UsersLogout']);
 Route::post('/user-update',[UserController::class,'UpdateProfile'])->middleware('auth:sanctum');
