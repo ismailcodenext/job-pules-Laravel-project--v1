@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\AboutHomeController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\EmployerJobController;
 use App\Http\Controllers\CompanyHeadingController;
@@ -103,6 +104,17 @@ Route::post("/update-heading-companie",[CompanyHeadingController::class,'Compani
 Route::post("/delete-heading-companie",[CompanyHeadingController::class,'CompanieHeadingDelete'])->middleware('auth:sanctum');
 
 
+
+// About -> About Page Api Route
+Route::get("/list-about-home",[AboutHomeController::class,'AboutHomeList'])->middleware('auth:sanctum');
+Route::post("/create-about-home",[AboutHomeController::class,'AboutHomeCreate'])->middleware('auth:sanctum');
+Route::post("/about-home-by-id",[AboutHomeController::class,'AboutHomeByID'])->middleware('auth:sanctum');
+Route::post("/update-about-home",[AboutHomeController::class,'AboutHomeUpdate'])->middleware('auth:sanctum');
+Route::post("/delete-about-home",[AboutHomeController::class,'AboutHomeDelete'])->middleware('auth:sanctum');
+
+
+
+
 // About -> Companie Page Api Route
 Route::get("/list-companie-history",[CompanieHistoryController::class,'CompanieHistoryList'])->middleware('auth:sanctum');
 Route::post("/create-companie-history",[CompanieHistoryController::class,'CompanieHistoryCreate'])->middleware('auth:sanctum');
@@ -120,8 +132,8 @@ Route::view('Companie-heading','pages.dashboard.admin-dashboard.home-page.headin
 
 
 // Admin About page Route start
-Route::view('Companie-History-Page','pages.dashboard.admin-dashboard.about-page.home');
-// Route::view('Companie-Page','pages.dashboard.admin-dashboard.about-page.companie');
+Route::view('AboutHome-Page','pages.dashboard.admin-dashboard.about-page.home');
+Route::view('Companie-History-Page','pages.dashboard.admin-dashboard.about-page.companie');
 
 //----------------Admin Dashboard Work End---------------------------//
 
@@ -209,9 +221,15 @@ Route::view('/candidate-login','pages.front-end-page.candidate.login');
 
 
 //Front-End Home Page Data Api Route Start
+Route::get('/homepage-Data',[HomePageController::class,'HomePage']);
 Route::get("/company-heading-Data",[CompanyHeadingController::class,'Heading']);
 Route::get("/top-company-data",[TopCompanieController::class,'index']);
 Route::get("/list-job-data",[JobController::class,'index']);
+
+//Front-End About Page Data Api Route Start
+Route::get('/aboutpage-Data',[AboutHomeController::class,'aboutPage']);
+Route::get('/company-history-data',[CompanieHistoryController::class,'CompanieHistory']);
+
 
 // check authentication for user
 // Route for checking authentication status

@@ -11,6 +11,18 @@ use Illuminate\Http\Request;
 
 class CompanieHistoryController extends Controller
 {
+
+    
+    public function CompanieHistory(){
+        try {
+            $Companie_data = CompanieHistory::latest()->get();
+            return response()->json(['status' => 'success', 'Companie_data' => $Companie_data]);
+        } catch (Exception $e) {
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+        }
+    }
+
+
     function CompanieHistoryList()
     {
         try {

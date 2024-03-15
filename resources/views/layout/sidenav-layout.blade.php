@@ -122,6 +122,12 @@
                      </a>
                 </li>
                 <li style="list-style-type: none !important">
+                    <a href="{{url("/AboutHome-Page")}}" style="list-style-type: none" class="side-bar-item">
+                        <i class="bi-building"></i>
+                                <span class="side-bar-item-caption">About Home Page</span>
+                     </a>                                    
+                </li>
+                <li style="list-style-type: none !important">
                     <a href="{{url("/Companie-History-Page")}}" style="list-style-type: none" class="side-bar-item">
                         <i class="bi-building"></i>
                                 <span class="side-bar-item-caption">About Companie History Page</span>

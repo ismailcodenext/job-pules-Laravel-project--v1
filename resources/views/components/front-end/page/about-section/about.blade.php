@@ -1,84 +1,120 @@
 
-<!-- Hero Start -->
-<section id="about_hero">
-    <div class="container">
-        <div class="about_hero_heading">
-            <img src="{{asset('front-end/assets/image/companie_logo/compaine-logo-02.webp')}}" alt="">
-            <p>Job Pulse is a cutting-edge job service company dedicated to revolutionizing the way individuals find
-                employment and businesses hire talent.</p>
+    <!-- Hero Start -->
+    <section id="hero">
+        <div class="hero_image">
+          <img src="" id="HomePageBanner" alt="" />
         </div>
-    </div>
-</section>
-<!-- Hero End -->
+        <div class="hero_heading">
+          <img src="" id="Logo" alt="" />
+          <p id="Description"></p>
+        </div>
+      </section>
+      <!-- Hero End -->
 
 <!-- History Start -->
 <section id="history">
-    <div class="container">
-        <div class="history_heading">
-            <h2>Company History
-            </h2>
-        </div>
-        <div class="history_content mt-4">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. At odio hic iste, maiores porro perferendis
-                eos inventore dolorem? Expedita molestiae nobis, consequuntur pariatur vitae, sit, voluptas
-                architecto aliquid odit asperiores doloremque fugiat qui quis distinctio tempore! Nesciunt animi
-                ducimus consectetur expedita nam dolorum culpa repellat totam eum! Rem pariatur optio repudiandae
-                ipsum adipisci dolore possimus itaque voluptate, labore tempora vero, mollitia, ea modi porro
-                deleniti architecto quia! Explicabo ducimus ipsa harum quis, molestiae velit dolores animi, id
-                dolor, beatae porro hic accusantium libero saepe ullam. Iste assumenda placeat rerum quidem illum
-                repellendus eius. Amet expedita obcaecati, rem architecto repudiandae consequatur.</p>
-        </div>
+    <div class="container" id="CompanieHistory">
+      
     </div>
 </section>
 <!-- History End -->
 
-<!-- Vision Start -->
-<section id="vision">
-    <div class="container">
-        <div class="vision_heading">
-            <h2>Our Vision
-
-            </h2>
-        </div>
-        <div class="vision_content mt-4">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. At odio hic iste, maiores porro perferendis
-                eos inventore dolorem? Expedita molestiae nobis, consequuntur pariatur vitae, sit, voluptas
-                architecto aliquid odit asperiores doloremque fugiat qui quis distinctio tempore! Nesciunt animi
-                ducimus consectetur expedita nam dolorum culpa repellat totam eum! Rem pariatur optio repudiandae
-                ipsum adipisci dolore possimus itaque voluptate, labore tempora vero, mollitia, ea modi porro
-                deleniti architecto quia! Explicabo ducimus ipsa harum quis, molestiae velit dolores animi, id
-                dolor, beatae porro hic accusantium libero saepe ullam. Iste assumenda placeat rerum quidem illum
-                repellendus eius. Amet expedita obcaecati, rem architecto repudiandae consequatur.</p>
-        </div>
-    </div>
-</section>
-<!-- Vision End -->
 
 <!-- Companies Start -->
 <section id="companie">
     <div class="container">
         <div class="compainie_heading">
-            <h1>Companies believe in us</h1>
+            <h1 id="CompanieHeading"></h1>
         </div>
         <div class="compaine_content">
-            <div class="compaine_cards">
-                <div class="compaine_card">
-                    <a href="#"><img src="{{asset('front-end/assets/image/companie_logo/compaine_logo_01.png')}}" alt=""></a>
-                </div>
-                <div class="compaine_card">
-                    <a href="#"><img src="{{asset('front-end/assets/image/companie_logo/compaine_logo_02.png')}}" alt=""></a>
-                </div>
-                <div class="compaine_card">
-                    <a href="#"><img src="{{asset('front-end/assets/image/companie_logo/compaine_logo_03.png')}}" alt=""></a>
-                </div>
-                <div class="compaine_card">
-                    <a href="#"><img src="{{asset('front-end/assets/image/companie_logo/compaine_logo_04.png')}}" alt=""></a>
-                </div>
-                <div class="compaine_card">
-                    <a href="#"><img src="{{asset('front-end/assets/image/companie_logo/compaine_logo_05.png')}}" alt=""></a>
-                </div>
+            <div class="compaine_cards" id="CompanyImg">
+
             </div>
         </div>
     </div>
 </section>
 <!-- Companies End -->
+
+<script>
+HomeData();
+CompanieHistory();
+
+async function HomeData() {
+        try {
+            const response = await axios.get("/aboutpage-Data");
+            const data = response.data.data;
+
+            document.getElementById('HomePageBanner').src = data.img_url;
+            document.getElementById('Logo').src = data.logo;
+            document.getElementById('Description').innerHTML = data.title;
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+
+    
+async function CompanieHistory() {
+    try {
+        let res = await axios.get("/company-history-data");
+        $("#CompanieHistory").empty();
+
+        if (res.data['Companie_data'].length === 0) {
+            // Handle case where no data is returned
+            console.warn("No Companie data found");
+            return;
+        }
+        res.data['Companie_data'].forEach((item, i) => {
+            let EachItem = `  <div class="history_heading mt-4">
+            <h2>${item['heading']}</h2>
+        </div>
+        <div class="history_content mt-4">
+            <p>${item['details']}</p>
+        </div>`;
+            $("#CompanieHistory").append(EachItem);
+        });
+    } catch (error) {
+        console.error("Error fetching Companie data:", error);
+    }
+}    
+
+
+CompanieHeadings();
+CompanieName();
+
+
+
+async function CompanieHeadings() {
+            try {
+                let res = await axios.get("/company-heading-Data");
+                const data = res.data.data;
+                document.getElementById('CompanieHeading').innerHTML = data.heading;
+            } catch (error) {
+                console.error("Error fetching Companie Heading data:", error);
+            }
+        }
+
+
+async function CompanieName() {
+    try {
+        let res = await axios.get("/top-company-data");
+        $("#CompanyImg").empty();
+
+        if (res.data['Companie_data'].length === 0) {
+            // Handle case where no data is returned
+            console.warn("No Companie data found");
+            return;
+        }
+        res.data['Companie_data'].forEach((item, i) => {
+            let EachItem = `<div class="compaine_card">
+                    <a href="#"><img src="${item['img_url']}" alt=""></a>
+                </div>`;
+            $("#CompanyImg").append(EachItem);
+        });
+    } catch (error) {
+        console.error("Error fetching Companie data:", error);
+    }
+}    
+
+
+</script>

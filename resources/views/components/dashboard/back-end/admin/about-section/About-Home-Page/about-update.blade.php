@@ -64,12 +64,11 @@ async function updatePreviews(input, imageUrl) {
 }
 
 
-
 async function FillUpUpdateForm(id) {
     try {
         document.getElementById('updateID').value = id;
         showLoader();
-        let res = await axios.post("/home-by-id", { id: id.toString() }, HeaderToken());
+        let res = await axios.post("/about-home-by-id", { id: id.toString() }, HeaderToken());
         hideLoader();
 
         let data = res.data.rows;
@@ -108,7 +107,7 @@ async function Update() {
 
         showLoader();
 
-        let res = await axios.post("/update-home", formData, config);
+        let res = await axios.post("/update-about-home", formData, config);
         hideLoader();
 
         if (res.data.status === "success") {

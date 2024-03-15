@@ -1,15 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\HomePage;
 use Exception;
+use App\Models\Home;
+use App\Models\HomePage;
+use Illuminate\Http\Request;
 use App\Helper\ResponseHelper;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class HomePageController extends Controller
 {
+
+    public function HomePage(){
+        $HomePageData = Home::first();
+        return ResponseHelper::Out('success',$HomePageData,200);
+    }
+
     public function index(){
         $HomePageData = HomePage::first();
         return ResponseHelper::Out('success',$HomePageData,200);

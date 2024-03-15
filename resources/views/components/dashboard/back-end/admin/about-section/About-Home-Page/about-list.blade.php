@@ -36,7 +36,7 @@ async function getList() {
 
     try {
         showLoader();
-        let res=await axios.get("/list-home",HeaderToken());
+        let res=await axios.get("/list-about-home",HeaderToken());
         hideLoader();
 
         let tableList=$("#tableList");
@@ -45,7 +45,7 @@ async function getList() {
         tableData.DataTable().destroy();
         tableList.empty();
 
-        res.data['Homedata'].forEach(function (item,index) {
+        res.data['AboutHomedata'].forEach(function (item,index) {
             let row=`<tr>
                     <td>${index+1}</td>
                     <td><img class="w-80 h-auto" alt="" src="${item['img_url']}"></td>
