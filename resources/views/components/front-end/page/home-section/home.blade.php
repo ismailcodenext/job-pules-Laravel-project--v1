@@ -281,36 +281,115 @@ function setupEditButtons() {
     });
 }
 
-async function Save(job_id, candidate_id, user_id) {
+async function Save() {
     try {
-        // You can add any necessary validation here
+        const updateID = document.getElementById('updateID').value; // Get the updateID
+        const user_id = getUserId(); // Assuming you have a function to get the user ID
 
-        // Prepare data to send to the API
-        const data = {
-            job_id: job_id,
-            candidate_id: candidate_id,
-            user_id: user_id
-        };
+        // Make sure both updateID and user_id are available
+        if (!updateID || !user_id) {
+            console.error("updateID or user_id is missing");
+            return;
+        }
 
-        // Make a POST request to the API route
-        const response = await axios.post("/create-job-applies", data);
+        // Perform the insertion into the job_applies table
+        const response = await axios.post("/create-job-applies", { updateID, user_id });
 
-        // Check the response status
-        if (response.status === 200) {
-            // Handle success
-            console.log("Job application successful");
-            // You can add any further logic here, such as showing a success message
+        // Check the response and handle accordingly
+        if (response.data.status === 'success') {
+            console.log("Job application saved successfully");
+            // You can perform any additional actions here, such as showing a success message or redirecting the user
         } else {
-            // Handle errors
-            console.error("Error applying for job");
-            // You can add any further error handling logic here, such as showing an error message
+            console.error("Failed to save job application:", response.data.message);
+            // Handle the failure, show error message or perform any necessary actions
         }
     } catch (error) {
-        console.error("Error:", error);
-        // Handle any unexpected errors here
+        console.error("Error saving job application:", error);
+        // Handle the error, show error message or perform any necessary actions
     }
 }
 
 </script>
 
+
+
+
+{{-- <script>
+    CompanieHeadings();
+    CompanieName();
+    Joblist();
+
+    async function CompanieHeadings() {
+        try {
+            let res = await axios.get("/company-heading-Data");
+            const data = res.data.data;
+            document.getElementById('CompanieHeading').innerHTML = data.heading;
+        } catch (error) {
+            console.error("Error fetching Companie Heading data:", error);
+        }
+    }
+
+    async function CompanieName() {
+        try {
+            let res = await axios.get("/top-company-data");
+            $("#CompanyImg").empty();
+
+            if (res.data['Companie_data'].length === 0) {
+                console.warn("No Companie data found");
+                return;
+            }
+
+            res.data['Companie_data'].forEach((item, i) => {
+                let EachItem = `
+                <div class="compaine_card">
+                    <a href="#"><img src="${item['img_url']}" alt=""></a>
+                </div>`;
+                $("#CompanyImg").append(EachItem);
+            });
+        } catch (error) {
+            console.error("Error fetching Companie data:", error);
+        }
+    }
+
+    async function Joblist() {
+        try {
+            let res = await axios.get("/list-job-data");
+            $("#JobList").empty();
+
+            if (res.data['status'] === 'success') {
+                const jobListData = res.data['jobListData'];
+
+                if (jobListData.length === 0) {
+                    console.warn("No job data found");
+                    return;
+                }
+
+                jobListData.forEach((item, i) => {
+                    let EachItem = `<div class="col-lg-12">
+                        <div class="recent_job_content_btn">
+                            <a data-id="${item['id']}" class="editBtn" href="#">Job Details</a>
+                        </div>
+                    </div>`;
+                    $("#JobList").append(EachItem);
+                });
+
+                // You can call this outside the loop if needed
+                setupEditButtons();
+            } else {
+                console.error("Failed to fetch job data:", res.data['message']);
+            }
+        } catch (error) {
+            console.error("Error fetching job data:", error);
+        }
+    }
+
+    function setupEditButtons() {
+        $('.editBtn').on('click', async function () {
+            let id = $(this).data('id');
+            await FillUpUpdateForm(id);
+            $("#update-modal").modal('show');
+        });
+    }
+
+</script> --}}
 

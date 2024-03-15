@@ -97,7 +97,7 @@
     <li class="mt-3 mx-3" style="list-style-type: none !important">
         <a href="#homeSection" style="list-style-type: none" data-bs-toggle="collapse">
             <i style="font-size: 20px" class="bi-align-top"></i>
-            <span style="color:black;font-weight:700;font-size: 20px">Modify ALL Page</span>
+            <span style="color:black;font-weight:400;font-size: 20px">ALL Pages</span>
             <span class="menu-arrow"></span>
         </a>
         <div class="collapse" id="homeSection">
@@ -109,11 +109,11 @@
                      </a>
                 </li>
                 <li style="list-style-type: none !important">
-                
+
     <a href="{{url("/Companie-heading")}}" class="side-bar-item">
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">Companies Heading</span>
-    </a>                                    
+    </a>
                 </li>
                 <li style="list-style-type: none !important">
                     <a href="{{url("/Companie-Page")}}" style="list-style-type: none" class="side-bar-item">
@@ -125,7 +125,7 @@
                     <a href="{{url("/AboutHome-Page")}}" style="list-style-type: none" class="side-bar-item">
                         <i class="bi-building"></i>
                                 <span class="side-bar-item-caption">About Home Page</span>
-                     </a>                                    
+                     </a>
                 </li>
                 <li style="list-style-type: none !important">
                     <a href="{{url("/Companie-History-Page")}}" style="list-style-type: none" class="side-bar-item">

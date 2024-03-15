@@ -9,23 +9,25 @@ class JobApplyController extends Controller
 {
     public function jobAppliesCreate(Request $request){
         try {
-            // Retrieve job_id, candidate_id, and user_id from the request
-            $job_id = $request->input('job_id');
-            $candidate_id = $request->input('candidate_id');
+            // Assuming 'updateID' and 'user_id' are sent in the request body
+            $updateID = $request->input('updateID');
             $user_id = $request->input('user_id');
 
-            // Create a new job application record
-            JobApply::create([
-                'job_id' => $job_id,
-                'candidate_id' => $candidate_id,
-                'user_id' => $user_id
-            ]);
+            // Validate inputs if necessary
+
+            // Create a new JobApply instance
+            $jobApply = new JobApply();
+            $jobApply->job_id = $updateID;
+            $jobApply->user_id = $user_id;
+
+            // Save the job application
+            $jobApply->save();
 
             // Return a success response
-            return response()->json(['status' => 'success', 'message' => 'Job application created successfully']);
+            return response()->json(['status' => 'success', 'message' => 'Job application saved successfully']);
         } catch (\Exception $e) {
-            // Return a fail response if an error occurs
-            return response()->json(['status' => 'fail', 'message' => $e->getMessage()], 500);
+            // Return an error response in case of any exception
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
         }
     }
 }
