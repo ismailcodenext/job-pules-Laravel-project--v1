@@ -20,7 +20,7 @@
                         <a class="nav-link" href="{{ url('/job') }}">Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blogs</a>
+                        <a class="nav-link" href="{{url('/blog')}}">Blogs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('contact') }}">Contact</a>

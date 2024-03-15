@@ -196,6 +196,7 @@ Route::post('/reset-password',[UserController::class,'ResetPassword'])->middlewa
 Route::view('/','pages.front-end-page.home-section.home-page');
 Route::view('/about','pages.front-end-page.about-section.about-page');
 Route::view('/job','pages.front-end-page.job-section.job-page');
+Route::view('/blog','pages.front-end-page.blog-section.blog-page');
 Route::view('/contact','pages.front-end-page.contact-section.contact-page');
 
 // Page Routes

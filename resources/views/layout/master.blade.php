@@ -31,6 +31,10 @@
     <link rel="stylesheet" href="{{ asset('front-end/assets/css/popap.css') }}">
     <!-- popap Css End -->
 
+    <!-- Blog Css Start -->
+    <link rel="stylesheet" href="{{ asset('front-end/assets/css/blog.css') }}">
+    <!-- Blog Css End -->
+
     <!-- job Css Start -->
     <link rel="stylesheet" href="{{ asset('front-end/assets/css/job.css') }}">
     <!-- job Css End -->
